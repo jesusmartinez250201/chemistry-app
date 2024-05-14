@@ -33,5 +33,3 @@ function App() {
 }
 
 export default App
-
-// Expample commentary
