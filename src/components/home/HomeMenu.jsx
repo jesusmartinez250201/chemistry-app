@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 {/**********
    * ICONS *
@@ -10,25 +11,25 @@ import chevronLeft from '../../assets/img/icons/chevron-left.svg';
    * COMPONENTS *
    **************/}
 import CrystallineStructure from './CrystallineStructure';
-import PeriodicTable from './PeriodicTable';
-import Molecules from './Molecules';
+import PeriodicTable from './PeriodicTable/PeriodicTable';
+import Bonds from './Bonds';
 
 export default function HomeMenu() {
-    const [currentMenuItem, setCurrentMenuItem] = useState(0);
+    const [currentMenuItem, setCurrentMenuItem] = useState(1);
     const $menuItemsContainer = useRef(null);
 
     const menuItems = [
-      <CrystallineStructure />,
       <PeriodicTable />,
-      <Molecules />
+      <CrystallineStructure />,
+      <Bonds />
     ];
   
     useEffect(() => {
-      console.log('currentMenuItem:', currentMenuItem);
+      //console.log('currentMenuItem:', currentMenuItem);
     }, [currentMenuItem])
   
     const fadeLeft = () => {
-      console.log($menuItemsContainer);
+      //console.log($menuItemsContainer);
       $menuItemsContainer.current?.classList.add('animate-fadeOutLeft');
       $menuItemsContainer.current.onanimationend = () => {
         if (currentMenuItem === 0) {
@@ -45,7 +46,7 @@ export default function HomeMenu() {
     }
 
     const fadeRight = () => {
-      console.log($menuItemsContainer);
+      //console.log($menuItemsContainer);
       $menuItemsContainer.current?.classList.add('animate-fadeOutRight');
       $menuItemsContainer.current.onanimationend = () => {
         if (currentMenuItem === menuItems.length - 1) {
@@ -83,8 +84,8 @@ export default function HomeMenu() {
             {/*<button>{menuItems.at(currentMenuItem)}</button>*/}
             {
               (menuItems.at(currentMenuItem).type === CrystallineStructure
-              ||  menuItems.at(currentMenuItem).type === Molecules)
-              ? <button className='h-96 w-full'>{menuItems.at(currentMenuItem)}</button>
+              ||  menuItems.at(currentMenuItem).type === Bonds)
+              ? <Link to='/test' className='h-96 w-full'>{menuItems.at(currentMenuItem)}</Link>
               : <div className='w-full'><PeriodicTable/></div>
             }
           </div>

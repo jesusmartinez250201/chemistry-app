@@ -7,6 +7,8 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+TODO.txt
+
 node_modules
 dist
 dist-ssr
@@ -24,3 +26,4 @@ release
 *.njsproj
 *.sln
 *.sw?
+src/components/utils/ElementsData.jsx

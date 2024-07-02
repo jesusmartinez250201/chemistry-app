@@ -28,10 +28,13 @@ let win: BrowserWindow | null
 
 function createWindow() {
   win = new BrowserWindow({
+    autoHideMenuBar: true,
     icon: path.join(process.env.VITE_PUBLIC, 'electron-vite.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.mjs'),
     },
+    minWidth: 664,
+    minHeight: 300,
   })
 
   // Test active push message to Renderer-process.
@@ -45,6 +48,8 @@ function createWindow() {
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(RENDERER_DIST, 'index.html'))
   }
+
+  win.webContents.openDevTools();
 }
 
 // Quit when all windows are closed, except on macOS. There, it's common
