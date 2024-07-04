@@ -1,10 +1,12 @@
-import React from 'react';
+import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+//import elements.elements.hidrogen from '../utils/ElementsData.json'
 
 function MenuBond() {
   const SCALE = 0.01;
-  const myMesh = React.useRef()
+  const myMesh = useRef()
   useFrame(() => {
+    //console.log(hidrogen.name);
     myMesh.current.rotation.y += 0.01;
   })
   return (

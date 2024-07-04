@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chemistry app</title>
+    <style>
+      #electron-loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        display: flex;
+        height: 100vh;
+        --tw-bg-opacity: 1;
+        background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+        --tw-bg-opacity: 0.5;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      #loading-atom {
+        animation: spin 1s linear infinite;
+        margin: auto;
+        width: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="electron-loading-screen">
+      <img
+        id="loading-atom"
+        src="loading-atom.svg"
+        alt="loading-atom"
+      />
+    </div>
+  </body>
+</html>
