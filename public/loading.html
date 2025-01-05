@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chemistry app</title>
     <style>
@@ -16,9 +14,6 @@
         z-index: 9999;
         display: flex;
         height: 100vh;
-        --tw-bg-opacity: 1;
-        background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-        --tw-bg-opacity: 0.5;
       }
       @keyframes spin {
         to {
@@ -28,17 +23,17 @@
       #loading-atom {
         animation: spin 1s linear infinite;
         margin: auto;
-        width: 5rem;
+        width: 20rem;
       }
     </style>
   </head>
   <body>
     <div id="electron-loading-screen">
-      <img
-        id="loading-atom"
-        src="loading-atom.svg"
-        alt="loading-atom"
-      />
+      <img id="loading-atom" src="atom.svg" alt="loading" draggable="false"/>
     </div>
+
+    <script type="text/javascript">
+      
+    </script>
   </body>
 </html>

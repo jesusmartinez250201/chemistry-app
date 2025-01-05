@@ -26,4 +26,3 @@ release
 *.njsproj
 *.sln
 *.sw?
-src/components/utils/ElementsData.jsx

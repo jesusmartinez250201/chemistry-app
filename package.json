@@ -1,7 +1,7 @@
 {
   "name": "chemistry-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.5",
     "@react-three/drei": "^9.107.2",
     "@react-three/fiber": "^8.16.6",
     "@types/three": "^0.164.0",
+    "electron-store": "^10.0.0",
+    "html-react-parser": "^5.1.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
@@ -36,5 +39,15 @@
     "vite-plugin-electron": "^0.28.6",
     "vite-plugin-electron-renderer": "^0.14.5"
   },
-  "main": "dist-electron/main.js"
+  "main": "dist-electron/main.js",
+  "extraResources": [
+    "./public/ColorPalettes.json",
+    {
+      "from": "./src/assets/",
+      "to": "./src/assets/",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ]
 }

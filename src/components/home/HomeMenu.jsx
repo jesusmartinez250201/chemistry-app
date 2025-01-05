@@ -1,104 +1,52 @@
-import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
-{/**********
-   * ICONS *
-   *********/}
-import chevronRight from '../../assets/img/icons/chevron-right.svg';
-import chevronLeft from '../../assets/img/icons/chevron-left.svg';
-
-
-{/***************
-   * COMPONENTS *
-   **************/}
-import CrystallineStructure from './CrystallineStructure';
-import PeriodicTable from './PeriodicTable/PeriodicTable';
+import Navbar from '../Navbar';
+import PeriodicTable from '../PeriodicTable/PeriodicTable';
 import Bonds from './Bonds';
-import Loading from '../Loading';
+import BohrModel from './BohrModel';
+import CrystallineStructure from './CrystallineStructure';
 
 export default function HomeMenu() {
-  const [currentMenuItem, setCurrentMenuItem] = useState(0);
-  const $menuItemsContainer = useRef(), $menu = useRef();
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const menuItems = [
-    <PeriodicTable />,
-    <CrystallineStructure />,
-    <Bonds />
-  ];
-
-  const fadeLeft = () => {
-    //console.log($menuItemsContainer);
-    $menuItemsContainer.current?.classList.add('animate-fadeOutLeft');
-    $menuItemsContainer.current.onanimationend = () => {
-      if (currentMenuItem === 0) {
-        setCurrentMenuItem(menuItems.length - 1);
-      } else {
-        setCurrentMenuItem(currentMenuItem - 1);
-      }
-      $menuItemsContainer.current?.classList.remove('animate-fadeOutLeft');
-      $menuItemsContainer.current?.classList.add('animate-fadeInRight');
-      $menuItemsContainer.current.onanimationend = () => {
-        $menuItemsContainer.current?.classList.remove('animate-fadeInRight');
-      }
-    }
-  }
-
-  const fadeRight = () => {
-    //console.log($menuItemsContainer);
-    $menuItemsContainer.current?.classList.add('animate-fadeOutRight');
-    $menuItemsContainer.current.onanimationend = () => {
-      if (currentMenuItem === menuItems.length - 1) {
-        setCurrentMenuItem(0);
-      } else {
-        setCurrentMenuItem(currentMenuItem + 1);
-      }
-      $menuItemsContainer.current?.classList.remove('animate-fadeOutRight');
-      $menuItemsContainer.current?.classList.add('animate-fadeInLeft');
-      $menuItemsContainer.current.onanimationend = () => {
-        $menuItemsContainer.current?.classList.remove('animate-fadeInLeft');
-      }
-    }
-  }
-
-  const handleLoad = () => {
-    setIsLoaded(true);
-    $menu.current.classList.remove('hidden');
-  }
+  const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
   return (
     <>
-      {/*****************
-           * MENU SECTION *
-           ****************/}
-      <Loading visible={isLoaded} />
-      <section id='menu' className='hidden' ref={$menu} onLoad={handleLoad}>
-        <div>
-          <button onClick={fadeLeft}>
-            <img className='w-20 inline' src={chevronLeft} alt="left arrow" />
-          </button>
-          <button onClick={fadeRight}>
-            <img className='w-20 inline' src={chevronRight} alt="right arrow" />
-          </button>
+      <div className='w-full' style={{ backgroundColor: colorPalette.background }}>
+        <Navbar />
+        <div className='mt-10'>
+          <PeriodicTable />
+          <div className='flex flex-wrap justify-center w-19/20 max-w-[1200px] mx-auto pt-3 w850:mt-4 w1200:justify-evenly xl:mt-7'
+            style={{ backgroundColor: colorPalette.background }}>
+            <span className='w-9/20 max-w-[370px] mx-0.5 my-3 h-72'>
+              <Link draggable={false} to={'Bonds'}><Bonds /></Link>
+            </span>
+            <span className='w-9/20 max-w-[370px] mx-0.5 my-3 h-72'>
+              <Link draggable={false} to={'BohrModel'}><BohrModel /></Link>
+            </span>
+            <span className='w-9/20 max-w-[370px] mx-0.5 my-3 h-72 mb-10 '>
+              <Link draggable={false} to={'CrystallineStructure'}><CrystallineStructure /></Link>
+            </span>
+          </div>
         </div>
+      </div>
+      <style>{`
+        body::-webkit-scrollbar {
+          width: 10px;
+        }
 
-        {/*************
-           * MENU ITEMS *
-           **************/}
-        <div id='menu-items-container' ref={$menuItemsContainer} className='flex justify-center overflow-hidden'>
-          {/*<button>{menuItems.at(currentMenuItem)}</button>*/}
-          {
-            (menuItems.at(currentMenuItem).type === CrystallineStructure
-              || menuItems.at(currentMenuItem).type === Bonds)
-              ? <Link to='/test' className='h-96 w-full'>{menuItems.at(currentMenuItem)}</Link>
-              : <div className='w-full'><PeriodicTable /></div>
-          }
-        </div>
+        body::-webkit-scrollbar-track {
+          background: ${colorPalette.scrollbarTrack};
+        }
 
-      </section>
-      {/*********************
-           * END MENU SECTION *
-           ********************/}
+        body::-webkit-scrollbar-thumb {
+          background: ${colorPalette.scrollbarThumb};
+          border-radius: 6px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+          background: ${colorPalette.scrollbarThumbHover};
+        }
+      `}
+      </style>
     </>
   )
 }

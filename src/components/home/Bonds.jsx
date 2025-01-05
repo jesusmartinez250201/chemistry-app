@@ -1,59 +1,73 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-//import elements.elements.hidrogen from '../utils/ElementsData.json'
+import { Sphere, Cylinder } from '@react-three/drei'
+import { useSpring, animated } from '@react-spring/three'
 
-function MenuBond() {
-  const SCALE = 0.01;
+function MenuBond({ hovered }) {
   const myMesh = useRef()
+
+  const { scale } = useSpring({
+    scale: hovered ? 1.2 : 1,
+    config: { tension: 300, friction: 10 }
+  })
+
   useFrame(() => {
-    //console.log(hidrogen.name);
     myMesh.current.rotation.y += 0.01;
   })
+
   return (
-    /**MOLECULA DE AGUA */
-    <group ref={myMesh}>
-      {/* ATOMO DE OXIGENO */}
-      <mesh position={[0, 0, 0]}>
-        <sphereGeometry args={[(63 * SCALE)]} />
+    <animated.group
+      ref={myMesh}
+      position={[0, 0.5, 1]}
+      scale={scale}
+    >
+      <Sphere position={[0, 0, 0]} args={[0.63]}>
         <meshStandardMaterial color='red' />
-      </mesh>
-      <mesh
-        position={[0, -0.55, -0.7]}
-        rotation={[(52.225 * Math.PI / 180), 0, 0]}
-      >
-        <cylinderGeometry args={[0.12, 0.12, 2]} />
+      </Sphere>
+      <Cylinder position={[0, -0.55, -0.7]} rotation={[(52.225 * Math.PI / 180), 0, 0]} args={[0.12, 0.12, 2]}>
         <meshStandardMaterial color={0xcccccc} />
-      </mesh>
-      <mesh
-        position={[0, -0.55, 0.7]}
-        rotation={[-(52.225 * Math.PI / 180), 0, 0]}
-      >
-        <cylinderGeometry args={[0.12, 0.12, 2]} />
+      </Cylinder>
+      <Cylinder position={[0, -0.55, 0.7]} rotation={[-(52.225 * Math.PI / 180), 0, 0]} args={[0.12, 0.12, 2]}>
         <meshStandardMaterial color={0xcccccc} />
-      </mesh>
-      {/* ATOMO DE HIDROGENO */}
-      <mesh position={[0, -1.2, 1.5]}>
-        <sphereGeometry args={[(32 * SCALE)]} />
+      </Cylinder>
+      <Sphere position={[0, -1.2, 1.5]} args={[0.32]}>
         <meshStandardMaterial color='blue' />
-      </mesh>
-      {/* ATOMO DE HIDROGENO */}
-      <mesh position={[0, -1.2, -1.5]}>
-        <sphereGeometry args={[(32 * SCALE)]} />
+      </Sphere>
+      <Sphere position={[0, -1.2, -1.5]} args={[0.32]}>
         <meshStandardMaterial color='blue' />
-      </mesh>
-    </group>
+      </Sphere>
+    </animated.group>
   )
 }
 
 export default function Bonds() {
+  const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
+  const [hovered, setHovered] = useState(false)
 
   return (
     <>
-      <h2 className='overflow-hidden text-center'>Enlaces</h2>
-      <Canvas>
+      <h2 className='text-3xl text-center unselectable'
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+        style={{ color: colorPalette.textTitles }}>
+        Enlaces
+      </h2>
+      <Canvas
+        className='bg-transparent'
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
         <ambientLight intensity={0.9} />
         <directionalLight position={[0, 0, 5]} />
-        <MenuBond />
+        {
+          hovered && (
+            <>
+              <directionalLight position={[0, 8, 0]} intensity={3} color={'white'} />
+              <directionalLight position={[0, -8, 0]} intensity={3} color={'white'} />
+            </>
+          )
+        }
+        <MenuBond hovered={hovered} />
       </Canvas>
     </>
   )

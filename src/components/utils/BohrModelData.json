@@ -1,0 +1,2466 @@
+{
+  "data": [
+    {
+      "elementName": "Hidrógeno",
+      "model": [
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Helio",
+      "model": [
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Litio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Berilio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Boro",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Carbono",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Nitrógeno",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Oxígeno",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Flúor",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Neón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        }
+      ]
+    },
+    {
+      "elementName": "Sodio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Magnesio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Aluminio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Silicio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Fósforo",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Azufre",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Cloro",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Argón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 8
+        }
+      ]
+    },
+    {
+      "elementName": "Potasio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Calcio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Escandio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Titanio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 10
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Vanadio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 11
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Cromo",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 13
+        },
+        
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Manganeso",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 13
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Hierro",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 14
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Cobalto",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 15
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Níquel",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 16
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Cobre",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Zinc",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Galio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Germanio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Arsénico",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Selenio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Bromo",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Kriptón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        
+        {
+          "electrons": 8
+        }
+      ]
+    },
+    {
+      "elementName": "Rubidio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Estroncio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Itrio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Zirconio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 10
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Niobio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 12
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Molibdeno",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 13
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Tecnecio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 13
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Rutenio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 15
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Rodio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 16
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Paladio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        }
+      ]
+    },
+    {
+      "elementName": "Plata",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Cadmio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Indio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Estaño",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Antimonio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Telurio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Yodo",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Xenón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        }
+      ]
+    },
+    {
+      "elementName": "Cesio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Bario",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Lantano",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Cerio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 19
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Praseodimio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 21
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Neodimio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 22
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Prometio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 23
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Samario",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 24
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Europio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 25
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Gadolinio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 25
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Terbio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 27
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Disprosio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 28
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Holmio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 29
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Erbio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 30
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Tulio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 31
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Iterbio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Lutecio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Hafnio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 10
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Tantalio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 11
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Wolframio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 12
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Renio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 13
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Osmio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 14
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Iridio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 15
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Platino",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 17
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Oro",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Mercurio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Talio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Plomo",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Bismuto",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Polonio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Astato",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Radón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        }
+      ]
+    },
+    {
+      "elementName": "Francio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 1
+        }
+      ]
+    },
+    {
+      "elementName": "Radio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Actinio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Torio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 10
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Protactinio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 20
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Uranio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 21
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Neptunio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 22
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Plutonio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 24
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Americio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 25
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Curio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 25
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Berkelio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 27
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Californio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 28
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Einstenio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 29
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Fermio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 30
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Mendelevio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 31
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Nobelio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Laurencio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 9
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Rutherfordio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 10
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Dubnio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 11
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Seaborgio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 12
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Bohrio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 13
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Hassio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 14
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Meitnerio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 15
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Darmstadtio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 16
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Roentgenio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 17
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Copernicio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 2
+        }
+      ]
+    },
+    {
+      "elementName": "Nihonio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 3
+        }
+      ]
+    },
+    {
+      "elementName": "Flerovio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 4
+        }
+      ]
+    },
+    {
+      "elementName": "Moscovio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 5
+        }
+      ]
+    },
+    {
+      "elementName": "Livermorio",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 6
+        }
+      ]
+    },
+    {
+      "elementName": "Tenesino",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 7
+        }
+      ]
+    },
+    {
+      "elementName": "Oganesón",
+      "model": [
+        {
+          "electrons": 2
+        },
+        {
+          "electrons": 8
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 32
+        },
+        {
+          "electrons": 18
+        },
+        {
+          "electrons": 8
+        }
+      ]
+    }
+  ]
+}
