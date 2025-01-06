@@ -1,7 +1,7 @@
 {
   "name": "chemistry-app",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -41,7 +41,6 @@
   },
   "main": "dist-electron/main.js",
   "extraResources": [
-    "./public/ColorPalettes.json",
     {
       "from": "./src/assets/",
       "to": "./src/assets/",
