@@ -1,9 +1,9 @@
-import { useColorPalette } from "../../hooks/useColorPalette"
-
-export function IdealBtn() {
-  const { colorPalette } = useColorPalette()
+export function IdealBtn({ hover, colorPalette, isSelected }) {
   return (
-    <svg className="w-full h-auto mx-auto unselectable pointer-events-none" viewBox="0 0 222 222" style={{stroke: colorPalette.text, fill: colorPalette.text}}>
+    <svg className="w-full h-auto mx-auto unselectable pointer-events-none" viewBox="0 0 222 222"
+      style={{ fill: (hover && isSelected) ? colorPalette.selectedButtonText : (isSelected) ? colorPalette.text : (hover) ? colorPalette.text : colorPalette.text,
+        stroke: (hover && isSelected) ? colorPalette.selectedButtonText : (isSelected) ? colorPalette.text : (hover) ? colorPalette.text : colorPalette.text
+       }}>
       <circle cx="40" cy="43" r="30" />
       <circle cx="40" cy="179" r="30" />
       <circle cx="182" cy="179" r="30" />
@@ -17,16 +17,16 @@ export function IdealBtn() {
   )
 }
 
-export function RealBtn() {
-  const { colorPalette } = useColorPalette()
-  
+export function RealBtn({ hover, colorPalette, isSelected }) {
+
   return (
-    <svg className="w-full h-auto mx-auto unselectable pointer-events-none" viewBox="0 0 222 222" style={{stroke: colorPalette.text, fill: colorPalette.text}}>
-      <circle cx="61.5" cy="60.5" r="50.5"/>
-      <circle cx="112.5" cy="111.5" r="20.5"/>
-      <circle cx="61.5" cy="161.5" r="50.5"/>
-      <circle cx="165.5" cy="161.5" r="50.5"/>
-      <circle cx="162.5" cy="60.5" r="50.5"/>
+    <svg className="w-full h-auto mx-auto unselectable pointer-events-none" viewBox="0 0 222 222"
+      style={{ fill: (hover && isSelected) ? colorPalette.selectedButtonText : (isSelected) ? colorPalette.text : (hover) ? colorPalette.text : colorPalette.text }}>
+      <circle cx="61.5" cy="60.5" r="50.5" />
+      <circle cx="112.5" cy="111.5" r="20.5" />
+      <circle cx="61.5" cy="161.5" r="50.5" />
+      <circle cx="165.5" cy="161.5" r="50.5" />
+      <circle cx="162.5" cy="60.5" r="50.5" />
     </svg>
   )
 }

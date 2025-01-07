@@ -49,7 +49,7 @@ export default function Bonds() {
       <h2 className='text-3xl text-center unselectable'
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        style={{ color: colorPalette.textTitles }}>
+        style={{ color: colorPalette.text }}>
         Enlaces
       </h2>
       <Canvas

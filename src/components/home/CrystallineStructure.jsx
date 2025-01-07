@@ -64,7 +64,7 @@ export default function CrystallineStructure() {
         className='text-center text-3xl unselectable'
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
-        style={{ color: colorPalette.textTitles }}
+        style={{ color: colorPalette.text }}
       >
         Redes de Bravais
       </h2>

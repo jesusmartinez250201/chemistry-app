@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import Navbar from '../Navbar';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import parse from 'html-react-parser';
@@ -35,7 +34,7 @@ import {
 import { IdealBtn, RealBtn } from '../Icons/BtnCrystallineStructures';
 import Center from '../Icons/Center';
 import StructureButton from './Buttons/StructureButton';
-import RealButton from './Buttons/RealButton';
+import { RealButton, IdealButton } from './Buttons/RealButton';
 import CenterButton from '../CenterButton';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
@@ -80,9 +79,7 @@ export default function CrystallineStructure() {
     }
 
   return (
-    <div className='h-screen flex flex-col'>
-      <Navbar />
-      <div id='3d-view' className='flex flex-col flex-grow relative items-center justify-end min-h-52'>
+    <div id='3d-view' className='h-full flex flex-col flex-grow relative items-center justify-end min-h-52'>
         <Canvas style={{ backgroundColor: colorPalette.background }}>
           <CamControls />
           <ambientLight intensity={1.5} />
@@ -117,14 +114,14 @@ export default function CrystallineStructure() {
               <span className='pointer-events-none'>IDEAL</span>
               <IdealBtn />
             </RealButton>
-            <RealButton
+            <IdealButton
               onClick={handleReal}
               value={'real'}
               isSelected={isReal}
               colorPalette={colorPalette}>
               <span className='pointer-events-none'>REAL</span>
               <RealBtn />
-            </RealButton>
+            </IdealButton>
           </div>
           {structureData && (
             <>
@@ -180,24 +177,24 @@ export default function CrystallineStructure() {
               onClick={handleFigure}
               value={'Cubica Simple'}
               isSelected={selectedFigure === 'Cubica Simple'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Simple</span>
+              colorPalette={colorPalette}
+              structureName={0}>
               <SimpleCubic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Cubica Centrada en el Cuerpo'}
               isSelected={selectedFigure === 'Cubica Centrada en el Cuerpo'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en el cuerpo</span>
+              colorPalette={colorPalette}
+              structureName={1}>
               <BodyCenteredCubic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Cubica Centrada en las Caras'}
               isSelected={selectedFigure === 'Cubica Centrada en las Caras'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en las caras</span>
+              colorPalette={colorPalette}
+              structureName={2}>
               <FaceCenteredCubic />
             </StructureButton>
 
@@ -207,16 +204,16 @@ export default function CrystallineStructure() {
               onClick={handleFigure}
               value={'Tetragonal Simple'}
               isSelected={selectedFigure === 'Tetragonal Simple'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Simple</span>
+              colorPalette={colorPalette}
+              structureName={5}>
               <SimpleTetragonal />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Tetragonal Centrada en el Cuerpo'}
               isSelected={selectedFigure === 'Tetragonal Centrada en el Cuerpo'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en el Cuerpo</span>
+              colorPalette={colorPalette}
+              structureName={6}>
               <BodyCenteredTetragonal />
             </StructureButton>
 
@@ -226,32 +223,32 @@ export default function CrystallineStructure() {
               onClick={handleFigure}
               value={'Ortorrombica Simple'}
               isSelected={selectedFigure === 'Ortorrombica Simple'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Simple</span>
+              colorPalette={colorPalette}
+              structureName={3}>
               <SimpleOrthorhombic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Ortorrombica Centrada en la Base'}
               isSelected={selectedFigure === 'Ortorrombica Centrada en la Base'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en la base</span>
+              colorPalette={colorPalette}
+              structureName={4}>
               <BaseCenteredOrthorhombic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Ortorrombica Centrada en el Cuerpo'}
               isSelected={selectedFigure === 'Ortorrombica Centrada en el Cuerpo'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en el cuerpo</span>
+              colorPalette={colorPalette}
+              structureName={7}>
               <BodyCenteredOrthorhombic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Ortorrombica Centrada en las Caras'}
               isSelected={selectedFigure === 'Ortorrombica Centrada en las Caras'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en las caras</span>
+              colorPalette={colorPalette}
+              structureName={8}>
               <FaceCenteredOrthorhombic />
             </StructureButton>
 
@@ -261,16 +258,16 @@ export default function CrystallineStructure() {
               onClick={handleFigure}
               value={'Monoclinica Simple'}
               isSelected={selectedFigure === 'Monoclinica Simple'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Simple</span>
+              colorPalette={colorPalette}
+              structureName={9}>
               <SimpleMonoclinic />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Monoclinica Centrada en la Base'}
               isSelected={selectedFigure === 'Monoclinica Centrada en la Base'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Centrada en la Base</span>
+              colorPalette={colorPalette}
+              structureName={10}>
               <BaseCenteredMonoclinic />
             </StructureButton>
 
@@ -280,30 +277,28 @@ export default function CrystallineStructure() {
               onClick={handleFigure}
               value={'Hexagonal'}
               isSelected={selectedFigure === 'Hexagonal'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Hexagonal</span>
+              colorPalette={colorPalette}
+              structureName={11}>
               <HexagonalIcon />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Romboedrica'}
               isSelected={selectedFigure === 'Romboedrica'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Romboédrica</span>
+              colorPalette={colorPalette}
+              structureName={12}>
               <RhombohedralIcon />
             </StructureButton>
             <StructureButton
               onClick={handleFigure}
               value={'Triclinica'}
               isSelected={selectedFigure === 'Triclinica'}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>Triclínica</span>
+              colorPalette={colorPalette}
+              structureName={13}>
               <TriclinicIcon />
             </StructureButton>
           </div>
         </Controls3D>
       </div>
-    </div>
-
   );
 }

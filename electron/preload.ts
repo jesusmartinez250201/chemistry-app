@@ -21,6 +21,25 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 
   // You can expose other APTs you need here.
   // ...
+  // Expose de app.quit() method
+  quit() {
+    ipcRenderer.send('app-quit')
+  },
+  minimize() {
+    ipcRenderer.send('app-minimize')
+  },
+  maximize() {
+    ipcRenderer.send('app-maximize')
+  },
+  unmaximize() {
+    ipcRenderer.send('app-unmaximize')
+  },
+  isMaximized() {
+    return ipcRenderer.sendSync('app-isMaximized')
+  },
+  restore() {
+    ipcRenderer.send('app-restore')
+  },
 })
 
 contextBridge.exposeInMainWorld('data', {

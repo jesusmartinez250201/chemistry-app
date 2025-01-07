@@ -10,9 +10,8 @@ const CenterButton = React.memo(({ onClick, children, colorPalette }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        backgroundColor: (hover) ? colorPalette.buttonHover : 'transparent'
-      }}
-    >
+        backgroundColor: (hover) ? colorPalette.buttonHover : 'transparent',
+        stroke: colorPalette.text}}>
       {children}
     </button>
   );

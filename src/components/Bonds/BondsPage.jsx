@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-import Navbar from '../Navbar';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import Controls3D from '../Controls3D';
@@ -88,250 +87,246 @@ export default function BondsPage() {
     }
 
   return (
-    <div className='h-screen flex flex-col'>
-        <Navbar />
-      <div id='3d-view' className='flex flex-col flex-grow relative items-center justify-end min-h-52'>
-        <Canvas style={{ backgroundColor: colorPalette.background }}>
-          <CamControls />
-          <ambientLight intensity={0.7} />
-          <pointLight position={[0, 5, 6]} intensity={4} />
-          <pointLight position={[5, 5, 0]} intensity={4} />
-          <pointLight position={[0, 0, 7]} intensity={5} />
-          <pointLight position={[0, 0, -7]} intensity={5} />
-          <pointLight position={[0, 0, -7]} intensity={5} />
-          <pointLight position={[-5, 0, 6]} intensity={5} />
-          <pointLight position={[5, 0, 6]} intensity={5} />
-          {/* <gridHelper />
+    <div id='3d-view' className='h-full w-full flex flex-col flex-grow relative items-center justify-end min-h-52'>
+      <Canvas style={{ backgroundColor: colorPalette.background }}>
+        <CamControls />
+        <ambientLight intensity={0.7} />
+        <pointLight position={[0, 5, 6]} intensity={4} />
+        <pointLight position={[5, 5, 0]} intensity={4} />
+        <pointLight position={[0, 0, 7]} intensity={5} />
+        <pointLight position={[0, 0, -7]} intensity={5} />
+        <pointLight position={[0, 0, -7]} intensity={5} />
+        <pointLight position={[-5, 0, 6]} intensity={5} />
+        <pointLight position={[5, 0, 6]} intensity={5} />
+        {/* <gridHelper />
           <axesHelper args={[5]} /> */}
-          {SelectedMoleculeComponent && (
-            <SelectedMoleculeComponent isReal={isReal} ideal3D={ideal3D} />
-          )}
-        </Canvas>
-        <Controls3D>
-          <div className='w-full flex justify-evenly my-1'>
-            <RealButton
-              onClick={handleReal}
-              value={'ideal'}
-              isSelected={!isReal}
-              colorPalette={colorPalette}>
-              IDEAL
-              <BtnIdealMolecule />
-            </RealButton>
-            <RealButton
-              onClick={handleReal}
-              value={'real'}
-              isSelected={isReal}
-              colorPalette={colorPalette}>
-              REAL
-              <BtnRealMolecule />
-            </RealButton>
-          </div>
-          <div className={`w-full flex justify-evenly my-2 ${isReal ? 'hidden' : 'block'}`} ref={btn2D3DContainer}>
-            <RealButton
-              onClick={handleIdeal3D}
-              value={'2D'}
-              isSelected={!ideal3D}
-              colorPalette={colorPalette}>
-              2D
-              <BtnIdeal2DMolecule />
-            </RealButton>
-            <RealButton
-              onClick={handleIdeal3D}
-              value={'3D'}
-              isSelected={ideal3D}
-              colorPalette={colorPalette}>
-              3D
-              <BtnIdeal3DMolecule />
-            </RealButton>
-          </div>
-          <div className='w-full flex justify-center my-5'>
-            <CenterButton
-              onClick={handleCameraCenter}
-              isSelected={false}
-              colorPalette={colorPalette}>
-              <Center />
-              <span className='ml-1'>CENTRAR</span>
-            </CenterButton>
-          </div>
+        {SelectedMoleculeComponent && (
+          <SelectedMoleculeComponent isReal={isReal} ideal3D={ideal3D} />
+        )}
+      </Canvas>
+      <Controls3D>
+        <div className='w-full flex justify-evenly my-1'>
+          <RealButton
+            onClick={handleReal}
+            value={'ideal'}
+            isSelected={!isReal}
+            colorPalette={colorPalette}>
+            IDEAL
+            <BtnIdealMolecule />
+          </RealButton>
+          <RealButton
+            onClick={handleReal}
+            value={'real'}
+            isSelected={isReal}
+            colorPalette={colorPalette}>
+            REAL
+            <BtnRealMolecule />
+          </RealButton>
+        </div>
+        <div className={`w-full flex justify-evenly my-2 ${isReal ? 'hidden' : 'block'}`} ref={btn2D3DContainer}>
+          <RealButton
+            onClick={handleIdeal3D}
+            value={'2D'}
+            isSelected={!ideal3D}
+            colorPalette={colorPalette}>
+            2D
+            <BtnIdeal2DMolecule />
+          </RealButton>
+          <RealButton
+            onClick={handleIdeal3D}
+            value={'3D'}
+            isSelected={ideal3D}
+            colorPalette={colorPalette}>
+            3D
+            <BtnIdeal3DMolecule />
+          </RealButton>
+        </div>
+        <div className='w-full flex justify-center my-5'>
+          <CenterButton
+            onClick={handleCameraCenter}
+            isSelected={false}
+            colorPalette={colorPalette}>
+            <Center />
+            <span className='ml-1'>CENTRAR</span>
+          </CenterButton>
+        </div>
 
-          {/* COVALENT BONDS */}
-          <h2 className='w-full text-center text-2xl'>Enlaces covalentes</h2>
-          <div className='w-full flex justify-evenly my-1'>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'carbonDioxide'}
-              isSelected={selectedMolecule === 'carbonDioxide'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Dióxido de carbono
-                </div>
-                <div className='text-3xl pb-2'>
-                  CO<sub>2</sub>
-                </div>
+        {/* COVALENT BONDS */}
+        <h2 className='w-full text-center text-2xl'>Enlaces covalentes</h2>
+        <div className='w-full flex justify-evenly my-1'>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'carbonDioxide'}
+            isSelected={selectedMolecule === 'carbonDioxide'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Dióxido de carbono
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'ammonia'}
-              isSelected={selectedMolecule === 'ammonia'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Amoniaco
-                </div>
-                <div className='text-3xl pb-2'>
-                  NH<sub>3</sub>
-                </div>
+              <div className='text-3xl pb-2'>
+                CO<sub>2</sub>
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'acetylene'}
-              isSelected={selectedMolecule === 'acetylene'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Acetileno
-                </div>
-                <div className='text-3xl pb-2'>
-                  C<sub>2</sub>H<sub>2</sub>
-                </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'ammonia'}
+            isSelected={selectedMolecule === 'ammonia'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Amoniaco
               </div>
-            </MoleculeButton>
-          </div>
+              <div className='text-3xl pb-2'>
+                NH<sub>3</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'acetylene'}
+            isSelected={selectedMolecule === 'acetylene'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Acetileno
+              </div>
+              <div className='text-3xl pb-2'>
+                C<sub>2</sub>H<sub>2</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+        </div>
 
-          {/* IONIC BONDS*/}
-          <h2 className='w-full text-center text-2xl'>Enlaces iónicos</h2>
-          <div className='w-full flex justify-evenly my-1'>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'sodiumChloride'}
-              isSelected={selectedMolecule === 'sodiumChloride'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Cloruro de sodio
-                </div>
-                <div className='text-3xl pb-2'>
-                  NaCl
-                </div>
+        {/* IONIC BONDS*/}
+        <h2 className='w-full text-center text-2xl'>Enlaces iónicos</h2>
+        <div className='w-full flex justify-evenly my-1'>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'sodiumChloride'}
+            isSelected={selectedMolecule === 'sodiumChloride'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Cloruro de sodio
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'magnesiumChloride'}
-              isSelected={selectedMolecule === 'magnesiumChloride'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Cloruro de magnesio
-                </div>
-                <div className='text-3xl pb-2'>
-                  MgCl<sub>2</sub>
-                </div>
+              <div className='text-3xl pb-2'>
+                NaCl
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'potassiumPermanganate'}
-              isSelected={selectedMolecule === 'potassiumPermanganate'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Permanganato de potasio
-                </div>
-                <div className='text-3xl pb-2'>
-                  KMnO<sub>4</sub>
-                </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'magnesiumChloride'}
+            isSelected={selectedMolecule === 'magnesiumChloride'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Cloruro de magnesio
               </div>
-            </MoleculeButton>
-          </div>
+              <div className='text-3xl pb-2'>
+                MgCl<sub>2</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'potassiumPermanganate'}
+            isSelected={selectedMolecule === 'potassiumPermanganate'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Permanganato de potasio
+              </div>
+              <div className='text-3xl pb-2'>
+                KMnO<sub>4</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+        </div>
 
-          {/* ORGANIC MOLECULES */}
-          <h2 className='w-full text-center text-2xl'>Moleculas organicas</h2>
-          <div className='w-full flex justify-evenly my-1'>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'acetone'}
-              isSelected={selectedMolecule === 'acetone'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Acetona
-                </div>
-                <div className='text-3xl pb-2'>
-                  C<sub>3</sub>H<sub>6</sub>O
-                </div>
+        {/* ORGANIC MOLECULES */}
+        <h2 className='w-full text-center text-2xl'>Moleculas organicas</h2>
+        <div className='w-full flex justify-evenly my-1'>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'acetone'}
+            isSelected={selectedMolecule === 'acetone'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Acetona
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'aspirin'}
-              isSelected={selectedMolecule === 'aspirin'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Ácido acetilsalicílico
-                </div>
-                <div className='text-3xl pb-2'>
-                  C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>
-                </div>
+              <div className='text-3xl pb-2'>
+                C<sub>3</sub>H<sub>6</sub>O
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'glucose'}
-              isSelected={selectedMolecule === 'glucose'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Glucosa
-                </div>
-                <div className='text-3xl pb-2'>
-                  C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>
-                </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'aspirin'}
+            isSelected={selectedMolecule === 'aspirin'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Ácido acetilsalicílico
               </div>
-            </MoleculeButton>
-          </div>
+              <div className='text-3xl pb-2'>
+                C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'glucose'}
+            isSelected={selectedMolecule === 'glucose'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Glucosa
+              </div>
+              <div className='text-3xl pb-2'>
+                C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>
+              </div>
+            </div>
+          </MoleculeButton>
+        </div>
 
-          {/* METALLIC BONDS */}
-          <h2 className='w-full text-center text-2xl'>Enlaces metálicos</h2>
-          <div className='w-full flex justify-evenly my-1'>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'chromium'}
-              isSelected={selectedMolecule === 'chromium'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Cromo
-                </div>
-                <div className='text-3xl pb-2'>
-                  Cr
-                </div>
+        {/* METALLIC BONDS */}
+        <h2 className='w-full text-center text-2xl'>Enlaces metálicos</h2>
+        <div className='w-full flex justify-evenly my-1'>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'chromium'}
+            isSelected={selectedMolecule === 'chromium'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Cromo
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'gold'}
-              isSelected={selectedMolecule === 'gold'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Oro
-                </div>
-                <div className='text-3xl pb-2'>
-                  Au
-                </div>
+              <div className='text-3xl pb-2'>
+                Cr
               </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'titanium'}
-              isSelected={selectedMolecule === 'titanium'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='pt-1'>
-                  Titanio
-                </div>
-                <div className='text-3xl pb-2'>
-                  Ti
-                </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'gold'}
+            isSelected={selectedMolecule === 'gold'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Oro
               </div>
-            </MoleculeButton>
-          </div>
-
-        </Controls3D>
-      </div>
+              <div className='text-3xl pb-2'>
+                Au
+              </div>
+            </div>
+          </MoleculeButton>
+          <MoleculeButton
+            onClick={handleSelectedMolecule} value={'titanium'}
+            isSelected={selectedMolecule === 'titanium'}
+            colorPalette={colorPalette}>
+            <div className='pointer-events-none'>
+              <div className='pt-1'>
+                Titanio
+              </div>
+              <div className='text-3xl pb-2'>
+                Ti
+              </div>
+            </div>
+          </MoleculeButton>
+        </div>
+      </Controls3D>
     </div>
   );
 }

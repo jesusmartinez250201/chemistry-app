@@ -1039,33 +1039,33 @@ export default function PeriodicTable() {
           <div className='flex items-center mb-0.5'>
             <span className='type-1 w-4 h-4'></span>
             <span className='ml-1 flex-1 leading-3 lg:leading-4'
-              style={{ color: colorPalette.textTitles }}
+              style={{ color: colorPalette.text }}
             >Metales alcalinos
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-2 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Alcalinotérreos</span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-3 w-4 h-4'></span>
-            <span className='ml-1' style={{ color: colorPalette.textTitles }}>
+            <span className='ml-1' style={{ color: colorPalette.text }}>
               Otros metales
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-4 w-4 h-4'></span>
             <span className='ml-1 flex-1 leading-3 lg:leading-4 lg:flex-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Metales de transición
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-5 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Lantánidos
             </span>
           </div>
@@ -1075,35 +1075,35 @@ export default function PeriodicTable() {
           <div className='flex items-center my-0.5'>
             <span className='type-6 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Actínidos
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-7 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Metaloides
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-8 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               No metales
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-9 w-4 h-4'></span>
             <span className='ml-1'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Halógenos
             </span>
           </div>
           <div className='flex items-center my-0.5'>
             <span className='type-10 w-4 h-4'></span>
             <span className='ml-1 lg:flex-1 lg:leading-4'
-              style={{ color: colorPalette.textTitles }}>
+              style={{ color: colorPalette.text }}>
               Gases nobles
             </span>
           </div>

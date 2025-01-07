@@ -3,75 +3,15 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import Store from "electron-store";
+import { colorPalettes } from '../src/components/utils/ColorPalettes.json';
 //const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const store = new Store();
 
-const colorPalettes = [
-  {
-    name: "Modo claro",
-    colors: ["#F8F9FA", "#A7AEB5", "#81888F", "#212529", "#050608"],
-    background: "#F8F9FA",
-    "3dBackground": "#F8F9FA",
-    navbarBackground: "#212529",
-    controlsHeaderBackground: "#050608",
-    controlsBackground: "#A7AEB5",
-    lines3d: "#050608",
-    text: "#050608",
-    textTitles: "#050608",
-    textLegend: "#050608",
-    textControlsHeader: "#F8F9FA",
-    navbarFillIcons: "#F8F9FA",
-    controlsIcons: "050608",
-    navbarIcons: "#F8F9FA",
-    navbarText: "#F8F9FA",
-    buttonHover: "#81888F",
-    selectedButton: "#81888F",
-    selectedButtonHover: "#F8F9FA",
-    sliderColor: "#81888F",
-    sliderThumb: "#F8F9FA",
-    checkbox: "#212529",
-    scrollbarTrack: "#F8F9FA",
-    scrollbarThumb: "#81888F",
-    scrollbarThumbHover: "#050608",
-    controlsScrollbarTrack: "#A7AEB5",
-    controlsScrollbarThumb: "#81888F",
-    controlsScrollbarThumbHover: "#050608",
-  },
-  {
-    name: "Modo oscuro",
-    colors: ["F8F9FA", "#CED4DA", "#7C8C9C", "#56606B", "#212529"],
-    background: "#212529",
-    "3dBackground": "#212529",
-    navbarBackground: "#212529",
-    controlsHeaderBackground: "#56606B",
-    controlsBackground: "#56606B",
-    lines3d: "#CED4DA",
-    text: "#CED4DA",
-    textTitles: "#F8F9FA",
-    textLegend: "#7C8C9C",
-    textControlsHeader: "#F8F9FA",
-    navbarFillIcons: "#F8F9FA",
-    controlsIcons: "#CED4DA",
-    navbarIcons: "#F8F9FA",
-    navbarText: "#F8F9FA",
-    buttonHover: "#7C8C9C",
-    selectedButton: "#7C8C9C",
-    selectedButtonHover: "#F8F9FA",
-    sliderColor: "#CED4DA",
-    sliderThumb: "#7C8C9C",
-    checkbox: "#7C8C9C",
-    scrollbarTrack: "#212529",
-    scrollbarThumb: "#56606B",
-    scrollbarThumbHover: "#7C8C9C",
-    controlsScrollbarTrack: "#56606B",
-    controlsScrollbarThumb: "#7C8C9C",
-    controlsScrollbarThumbHover: "#CED4DA",
-  },
-];
+//store.set("colorPalettes", ''); //Restore default color palettes
 
-if (!store.get('colorPalettesSet')) {
+if (!store.get('colorPalettesSet') || !store.get('colorPalettes')) {
   store.set('colorPalettes', colorPalettes);
   store.set('selectedColorPalette', 0);
   store.set('colorPalettesSet', true);
@@ -120,11 +60,13 @@ function createWindow() {
     show: false,
     minWidth: 664,
     minHeight: 630,
-    titleBarStyle: "hidden",
-    titleBarOverlay: {
-      color: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarBackground,
-      symbolColor: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarText,
-    },
+    frame: false,
+    // titleBarOverlay: {
+    //   //color: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarBackground,
+    //   color: 'transparent',
+    //   //symbolColor: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarText,
+    //   symbolColor: 'transparent',
+    // },
   });
 
   if (VITE_DEV_SERVER_URL) {
@@ -204,3 +146,22 @@ ipcMain.on("electron-store-get", async (event, val) => {
 ipcMain.on("electron-store-set", async (_, key, val) => {
   store.set(key, val);
 });
+ipcMain.on("app-quit", async () => {
+  win?.close();
+});
+ipcMain.on("app-minimize", async () => {
+  win?.minimize();
+});
+ipcMain.on("app-maximize", async () => {
+  win?.maximize();
+});
+ipcMain.on("app-unmaximize", async () => {
+  win?.unmaximize();
+});
+ipcMain.on("app-isMaximized", async (event) => {
+  event.returnValue = win?.isMaximized();
+});
+ipcMain.on("app-restore", async () => {
+  win?.restore();
+});
+

@@ -554,6 +554,14 @@ video {
   --tw-contain-style:  ;
 }
 
+#titleBar {
+  -webkit-app-region: drag;
+}
+
+.title-button {
+  -webkit-app-region: no-drag;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1292,20 +1300,12 @@ video {
   position: relative;
 }
 
-.sticky {
-  position: sticky;
-}
-
 .bottom-5 {
   bottom: 1.25rem;
 }
 
 .left-9\/25 {
   left: 36%;
-}
-
-.top-0 {
-  top: 0px;
 }
 
 .top-4 {
@@ -1330,14 +1330,6 @@ video {
 
 .col-span-1 {
   grid-column: span 1 / span 1;
-}
-
-.float-start {
-  float: inline-start;
-}
-
-.float-end {
-  float: inline-end;
 }
 
 .float-right {
@@ -1619,8 +1611,8 @@ video {
   width: 1.5rem;
 }
 
-.w-7 {
-  width: 1.75rem;
+.w-9 {
+  width: 2.25rem;
 }
 
 .w-9\/20 {
@@ -1758,10 +1750,6 @@ video {
   align-self: center;
 }
 
-.justify-self-end {
-  justify-self: end;
-}
-
 .overflow-y-scroll {
   overflow-y: scroll;
 }
@@ -1881,6 +1869,10 @@ video {
   fill: #fff;
 }
 
+.fill-black {
+  fill: #000;
+}
+
 .stroke-white {
   stroke: #fff;
 }
@@ -1889,8 +1881,16 @@ video {
   stroke-width: 2;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .p-1 {
   padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .px-1 {
@@ -2241,10 +2241,6 @@ video {
     margin-top: 1rem;
   }
 
-  .w850\:mt-8 {
-    margin-top: 2rem;
-  }
-
   .w850\:block {
     display: block;
   }
@@ -2259,10 +2255,6 @@ video {
 
   .w850\:h-full {
     height: 100%;
-  }
-
-  .w850\:h-screen {
-    height: 100vh;
   }
 
   .w850\:w-1\/5 {
@@ -2476,17 +2468,8 @@ video {
 }
 
 @media (min-width: 1280px) {
-  .xl\:mx-4 {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
   .xl\:mt-7 {
     margin-top: 1.75rem;
-  }
-
-  .xl\:mt-8 {
-    margin-top: 2rem;
   }
 
   .xl\:h-80 {
@@ -2511,11 +2494,5 @@ video {
 
   .xl\:text-6xl {
     font-size: 4rem;
-  }
-}
-
-@media (min-width: 1536px) {
-  .\32xl\:mt-6 {
-    margin-top: 1.5rem;
   }
 }

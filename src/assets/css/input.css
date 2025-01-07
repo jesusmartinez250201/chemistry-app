@@ -35,6 +35,15 @@
 }
 
 @layer components {
+
+  #titleBar {
+    -webkit-app-region: drag;
+  }
+
+  .title-button {
+    -webkit-app-region: no-drag;
+  }
+
   .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
