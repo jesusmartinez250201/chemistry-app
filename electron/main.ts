@@ -9,10 +9,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const store = new Store();
 
-//store.set("colorPalettes", ''); //Restore default color palettes
+store.set("colorPalettes", ''); //Restore default color palettes
+store.set('colorPalettes', colorPalettes);
 
-if (!store.get('colorPalettesSet') || !store.get('colorPalettes')) {
-  store.set('colorPalettes', colorPalettes);
+if (!store.get('colorPalettesSet') && !store.get('colorPalettes')) {
   store.set('selectedColorPalette', 0);
   store.set('colorPalettesSet', true);
 }
