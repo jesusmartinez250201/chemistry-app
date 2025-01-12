@@ -5,7 +5,7 @@ import PeriodicTableSelector from './PeriodicTableSelector';
 import Controls3D from '../Controls3D';
 import { Table } from '../utils/ElementsData.json';
 import Center from '../Icons/Center';
-import {RealButton, IdealButton} from './Buttons/RealButton';
+import { RealButton, IdealButton } from './Buttons/RealButton';
 import CenterButton from '../CenterButton';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
@@ -39,18 +39,18 @@ export default function BohrModelPage() {
         <Bohr3DModel atomicNumber={currentElement} isReal={isReal} onCenterCamera={handleCenterCamera} cameraRef={cameraRef} />
         <Controls3D>
           <div className='w-full flex justify-around my-1'>
-            <RealButton
-              onClick={handleReal}
-              value={'ideal'}
-              isSelected={!isReal}
-              colorPalette={colorPalette}>
-            </RealButton>
             <IdealButton
               onClick={handleReal}
               value={'real'}
               isSelected={isReal}
               colorPalette={colorPalette}>
             </IdealButton>
+            <RealButton
+              onClick={handleReal}
+              value={'ideal'}
+              isSelected={!isReal}
+              colorPalette={colorPalette}>
+            </RealButton>
           </div>
           <div className="w-full my-3 flex justify-between items-center">
             <span className='w-44 md:text-sm' style={{ color: colorPalette.text }}>Tamaño de electrones</span>

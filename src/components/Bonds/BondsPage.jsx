@@ -74,7 +74,6 @@ export default function BondsPage() {
       const { camera } = useThree()
 
       useEffect(() => {
-        console.log(window.data.store.get('selectedColorPalette'));
         cameraRef.current = camera;
         camera.position.set(0, 0, 7);
       }, [camera]);

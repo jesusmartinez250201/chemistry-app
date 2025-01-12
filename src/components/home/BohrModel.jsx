@@ -4,7 +4,6 @@ import { Edges } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
-console.log(colorPalette.lines3d)
 
 function Bohr3DModel({ hovered }) {
   const { scale } = useSpring({

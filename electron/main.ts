@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from "electron";
 //import { createRequire } from 'node:module'
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+// import fs from 'fs';
 import Store from "electron-store";
 import { colorPalettes } from '../src/components/utils/ColorPalettes.json';
 //const require = createRequire(import.meta.url)
@@ -9,12 +10,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const store = new Store();
 
-store.set("colorPalettes", ''); //Restore default color palettes
-store.set('colorPalettes', colorPalettes);
+store.set("colorPalettes", ""); //Restore default color palettes
+store.set("colorPalettes", colorPalettes);
 
-if (!store.get('colorPalettesSet') && !store.get('colorPalettes')) {
-  store.set('selectedColorPalette', 0);
-  store.set('colorPalettesSet', true);
+if (!store.get("colorPalettesSet")) {
+  store.set("selectedColorPalette", 0);
+  store.set("colorPalettesSet", true);
 }
 
 // The built directory structure
@@ -61,19 +62,11 @@ function createWindow() {
     minWidth: 664,
     minHeight: 630,
     frame: false,
-    // titleBarOverlay: {
-    //   //color: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarBackground,
-    //   color: 'transparent',
-    //   //symbolColor: (store.get("colorPalettes") as typeof colorPalettes)[store.get("selectedColorPalette") as number].navbarText,
-    //   symbolColor: 'transparent',
-    // },
   });
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);
   } else {
-    // win.loadFile('dist/index.html')
-    // win.loadFile(path.join(RENDERER_DIST, 'index.html'))
     splash.loadFile(path.join(process.env.VITE_PUBLIC, "loading.html"));
   }
 
@@ -89,7 +82,7 @@ function createWindow() {
 
   win.webContents.on("did-finish-load", () => {
     if (splash) {
-      splash.hide();
+      splash.destroy();
     }
     if (win) {
       win.show();
@@ -110,12 +103,6 @@ function createWindow() {
         event.preventDefault();
         win.reload();
       }
-    }
-  });
-
-  win.on("closed", () => {
-    if (splash) {
-      splash.close();
     }
   });
 }
@@ -140,6 +127,43 @@ app.on("activate", () => {
 
 app.whenReady().then(createWindow);
 
+// ipcMain.handle("app-metrics", async () => {
+//   return app.getAppMetrics();
+// });
+
+// ipcMain.handle("write-file", async (_, filePath, data) => {
+//   try {
+//     fs.writeFileSync(filePath, data, "utf-8");
+//     return true;
+//   } catch (error) {
+//     console.error("Error writing file:", error);
+//     return false;
+//   }
+// });
+
+// ipcMain.on("read-file", (event, filePath) => {
+//   try {
+//     const data = fs.readFileSync(filePath, "utf-8");
+//     event.returnValue = data;
+//   } catch (error) {
+//     console.error("Error reading file:", error);
+//     event.returnValue = null;
+//   }
+// });
+// ipcMain.on("modify-file", (event, filePath, newData) => {
+//   try {
+//     const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+//     const updatedData = { ...data, ...newData };
+//     fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 2), "utf-8");
+//     event.returnValue = true;
+//   } catch (error) {
+//     console.error("Error modifying file:", error);
+//     event.returnValue = false;
+//   }
+// });
+// ipcMain.handle("get-app-path", async () => {
+//   return app.getPath('userData');
+// });
 ipcMain.on("electron-store-get", async (event, val) => {
   event.returnValue = store.get(val);
 });
@@ -164,4 +188,3 @@ ipcMain.on("app-isMaximized", async (event) => {
 ipcMain.on("app-restore", async () => {
   win?.restore();
 });
-

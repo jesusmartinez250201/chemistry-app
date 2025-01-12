@@ -1865,18 +1865,6 @@ video {
   fill: none;
 }
 
-.fill-white {
-  fill: #fff;
-}
-
-.fill-black {
-  fill: #000;
-}
-
-.stroke-white {
-  stroke: #fff;
-}
-
 .stroke-2 {
   stroke-width: 2;
 }

@@ -26,6 +26,7 @@ declare global {
     };
   }
 }
+
 import { colorPalettes } from "./components/utils/ColorPalettes.json";
 
 function App() {
