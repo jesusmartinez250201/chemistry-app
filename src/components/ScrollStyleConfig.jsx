@@ -8,8 +8,9 @@ export default function ScrollStyleConfig() {
         }
       
         #content::-webkit-scrollbar {
+          display: none;
           width: 10px;
-          height: 100px;
+          height: 0px;
         }
       
         #content::-webkit-scrollbar-track {

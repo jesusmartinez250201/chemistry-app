@@ -46,7 +46,7 @@ export default function Bonds() {
 
   return (
     <>
-      <h2 className='text-3xl text-center unselectable'
+      <h2 className='text-center unselectable'
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         style={{ color: colorPalette.text }}>

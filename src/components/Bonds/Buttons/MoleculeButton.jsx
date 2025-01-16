@@ -5,7 +5,8 @@ const MoleculeButton = React.memo(({ onClick, value, children, isSelected, color
 
   return (
     <button
-      className='w-44 flex flex-col items-center justify-around px-1 mx-1 rounded hover:transition-all'
+      className='w-24 flex flex-col items-center justify-around px-1 mx-1 rounded hover:transition-all
+      2xl:w-28'
       onClick={onClick}
       value={value}
       onMouseEnter={() => setHover(true)}

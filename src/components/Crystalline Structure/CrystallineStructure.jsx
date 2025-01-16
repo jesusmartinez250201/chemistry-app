@@ -60,7 +60,7 @@ export default function CrystallineStructure() {
       setStructureData(data);
     },
     handleCameraCenter = () => {
-      cameraRef.current.position.set(0, 0, 8);
+      cameraRef.current.position.set(0, 0, 7);
       controlsRef.current.target.set(0, 0, 0);
     },
     CamControls = () => {
@@ -68,7 +68,7 @@ export default function CrystallineStructure() {
 
       useEffect(() => {
         cameraRef.current = camera;
-        camera.position.set(0, 0, 8);
+        camera.position.set(0, 0, 7);
       }, [camera]);
 
       return (
@@ -79,8 +79,9 @@ export default function CrystallineStructure() {
     }
 
   return (
-    <div id='3d-view' className='h-full flex flex-col flex-grow relative items-center justify-end min-h-52'>
-      <Canvas style={{ backgroundColor: colorPalette.background }}>
+    <div id='3d-view' className='h-full w-full flex flex-col flex-grow items-center
+      w850:flex-row'>
+      <Canvas className='flex-grow' style={{ backgroundColor: colorPalette.background }}>
         <CamControls />
         <ambientLight intensity={1.5} />
         <pointLight position={[0, 1, 6]} intensity={4} />
@@ -105,81 +106,108 @@ export default function CrystallineStructure() {
 
       </Canvas>
       <Controls3D>
-        <div className='w-full flex justify-evenly my-1'>
-          <IdealButton
-            onClick={handleReal}
-            value={'ideal'}
-            isSelected={!isReal}
-            colorPalette={colorPalette}>
-            <span className='pointer-events-none'>IDEAL</span>
-            <IdealBtn />
-          </IdealButton>
-          <RealButton
-            onClick={handleReal}
-            value={'real'}
-            isSelected={isReal}
-            colorPalette={colorPalette}>
-            <span className='pointer-events-none'>REAL</span>
-            <RealBtn />
-          </RealButton>
-        </div>
-        {structureData && (
-          <>
-            <p className='text-center mt-3 mb-1 font-bold text-lg' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
-            {(structureData.structureName === 'Estructura Monoclínica Centrada en la Base' && isReal) ? (
+        <style>{`
+         .structure-data::-webkit-scrollbar {
+           width: 10px;
+         }
+         .structure-data::-webkit-scrollbar-track {
+           background: ${colorPalette.controlsScrollbarTrack};
+         }
+          
+         .structure-data::-webkit-scrollbar-thumb {
+           background: ${colorPalette.controlsScrollbarThumb};
+           border-radius: 6px;
+         }
+          
+         .structure-data::-webkit-scrollbar-thumb:hover {
+           background: ${colorPalette.controlsScrollbarThumbHover};
+         }
+      `}
+        </style>
+        <div className='w-1/2 flex flex-col h-full p-3
+          w850:w-full w850:justify-between'>
+          <div className='flex justify-around'>
+            <IdealButton
+              onClick={handleReal}
+              value={'ideal'}
+              isSelected={!isReal}
+              colorPalette={colorPalette}>
+              <span className='pointer-events-none'>IDEAL</span>
+              <IdealBtn />
+            </IdealButton>
+            <RealButton
+              onClick={handleReal}
+              value={'real'}
+              isSelected={isReal}
+              colorPalette={colorPalette}>
+              <span className='pointer-events-none'>REAL</span>
+              <RealBtn />
+            </RealButton>
+          </div>
+          {structureData && (
+            <>
+              <p className='text-center mt-3 mb-1 font-bold text-lg' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
+              {(structureData.structureName === 'Estructura Monoclínica Centrada en la Base' && isReal) ? (
 
-              <span>
-                <b style={{ color: colorPalette.textTitles }}>Material: </b>{parse(structureData.materialSymbol)}
-              </span>
-            ) :
-              (
                 <span>
-                  <b style={{ color: colorPalette.textTitles }}>Material:</b> {structureData.materialName} ({parse(structureData.materialSymbol)})
+                  <b style={{ color: colorPalette.textTitles }}>Material: </b>{parse(structureData.materialSymbol)}
                 </span>
-              )
-            }
-            <div className='flex flex-wrap justify-around'>
-              {
-                structureData.atomsLegend.map((atom, index) => (
-                  <span key={index} className='flex mr-1 items-center mt-2'>
-                    <span
-                      className={`w-[20px] h-[20px] m-1`}
-                      style={{ backgroundColor: atom.color }}>
-                    </span>
-                    <span>{`${atom.material} (${atom.symbol})`}</span>
+              ) :
+                (
+                  <span>
+                    <b style={{ color: colorPalette.textTitles }}>Material:</b> {structureData.materialName} ({parse(structureData.materialSymbol)})
                   </span>
-                ))
+                )
               }
-            </div>
+              <div className='flex flex-wrap justify-evenly'>
+                {
+                  structureData.atomsLegend.map((atom, index) => (
+                    <span key={index} className='flex mr-1 items-center mt-1'>
+                      <span
+                        className={`w-[15px] h-[15px] m-1`}
+                        style={{ backgroundColor: atom.color }}>
+                      </span>
+                      <span>{`${atom.material} (${atom.symbol})`}</span>
+                    </span>
+                  ))
+                }
+              </div>
 
-          </>
-        )}
-        <div className='w-full flex justify-center my-1'>
-          <CenterButton onClick={handleCameraCenter} colorPalette={colorPalette}>
-            <Center />
-            <span className='ml-1'>CENTRAR</span>
-          </CenterButton>
+            </>
+          )}
+          <div className='w-full flex justify-center my-1'>
+            <CenterButton onClick={handleCameraCenter} colorPalette={colorPalette}>
+              <Center />
+              <span className='ml-1'>CENTRAR</span>
+            </CenterButton>
+          </div>
+          {
+            isReal && (
+              <div className='w-full flex items-center'>
+                <input type="checkbox" name="unit-cell" id="unit-cell" checked={showUnitCell} onChange={() => setShowUnitCell(!showUnitCell)}
+                  style={{ accentColor: colorPalette.checkbox }} />
+                <label htmlFor="unit-cell" className='unselectable ml-1'>Mostrar celda unitaria</label>
+              </div>
+            )
+          }
         </div>
-        {
-          isReal && (
-            <div className='w-full flex items-center'>
-              <input type="checkbox" name="unit-cell" id="unit-cell" checked={showUnitCell} onChange={() => setShowUnitCell(!showUnitCell)}
-                style={{ accentColor: colorPalette.checkbox }} />
-              <label htmlFor="unit-cell" className='unselectable ml-1'>Mostrar celda unitaria</label>
-            </div>
-          )
-        }
-        <div className='flex flex-wrap justify-evenly p-1 w-full' style={{ color: colorPalette.text, fill: colorPalette.text, stroke: colorPalette.text }}>
+
+
+        <div className='structure-data w-1/2 h-full overflow-y-scroll flex flex-wrap justify-evenly py-3
+          w850:w-full w850:border-t' 
+          style={{ color: colorPalette.text, fill: colorPalette.text, stroke: colorPalette.text, borderColor: colorPalette.text }}>
 
           {/* CUBIC STRUCTURES */}
-          <div className='w-full mb-2 mt-2 text-center text-xl' style={{ color: colorPalette.textTitles }}><b>Estructuras cúbicas</b></div>
+          <div className='w-full text-center text-xl' style={{ color: colorPalette.textTitles }}><b>Estructuras cúbicas</b></div>
           <StructureButton
             onClick={handleFigure}
             value={'Cubica Simple'}
             isSelected={selectedFigure === 'Cubica Simple'}
             colorPalette={colorPalette}
             structureName={0}>
-            <SimpleCubic />
+            <div className='w-1/2 pointer-events-none'>
+              <SimpleCubic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -187,7 +215,9 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Cubica Centrada en el Cuerpo'}
             colorPalette={colorPalette}
             structureName={1}>
-            <BodyCenteredCubic />
+            <div className='w-1/2 pointer-events-none'>
+              <BodyCenteredCubic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -195,18 +225,22 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Cubica Centrada en las Caras'}
             colorPalette={colorPalette}
             structureName={2}>
-            <FaceCenteredCubic />
+            <div className='w-1/2'>
+              <FaceCenteredCubic />
+            </div>
           </StructureButton>
 
           {/* TETRAGONAL STRUCTURES */}
-          <div className='w-full mb-2 mt-4 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Estructuras tetragonales</b></div>
+          <div className='w-full mb-2 text-center text-xl' style={{ color: colorPalette.textTitles }}><b>Estructuras tetragonales</b></div>
           <StructureButton
             onClick={handleFigure}
             value={'Tetragonal Simple'}
             isSelected={selectedFigure === 'Tetragonal Simple'}
             colorPalette={colorPalette}
             structureName={5}>
-            <SimpleTetragonal />
+            <div className='w-1/2 pointer-events-none'>
+              <SimpleTetragonal />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -214,18 +248,22 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Tetragonal Centrada en el Cuerpo'}
             colorPalette={colorPalette}
             structureName={6}>
-            <BodyCenteredTetragonal />
+            <div className='w-1/2 pointer-events-none'>
+              <BodyCenteredTetragonal />
+            </div>
           </StructureButton>
 
           {/* ORTHORHOMBIC STRUCTURES */}
-          <div className='w-full mb-2 mt-4 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Estructuras ortorrómbicas</b></div>
+          <div className='w-full mb-2 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Estructuras ortorrómbicas</b></div>
           <StructureButton
             onClick={handleFigure}
             value={'Ortorrombica Simple'}
             isSelected={selectedFigure === 'Ortorrombica Simple'}
             colorPalette={colorPalette}
             structureName={3}>
-            <SimpleOrthorhombic />
+            <div className='w-1/2 pointer-events-none'>
+              <SimpleOrthorhombic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -233,7 +271,9 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Ortorrombica Centrada en la Base'}
             colorPalette={colorPalette}
             structureName={4}>
-            <BaseCenteredOrthorhombic />
+            <div className='w-1/2 pointer-events-none'>
+              <BaseCenteredOrthorhombic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -241,7 +281,9 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Ortorrombica Centrada en el Cuerpo'}
             colorPalette={colorPalette}
             structureName={7}>
-            <BodyCenteredOrthorhombic />
+            <div className='w-1/2 pointer-events-none'>
+              <BodyCenteredOrthorhombic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -249,18 +291,22 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Ortorrombica Centrada en las Caras'}
             colorPalette={colorPalette}
             structureName={8}>
-            <FaceCenteredOrthorhombic />
+            <div className='w-1/2 pointer-events-none'>
+              <FaceCenteredOrthorhombic />
+            </div>
           </StructureButton>
 
           {/* MONOCLINICS STRUCTURES */}
-          <div className='w-full mb-2 mt-4 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Estructuras monoclinicas</b></div>
+          <div className='w-full mb-2 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Estructuras monoclinicas</b></div>
           <StructureButton
             onClick={handleFigure}
             value={'Monoclinica Simple'}
             isSelected={selectedFigure === 'Monoclinica Simple'}
             colorPalette={colorPalette}
             structureName={9}>
-            <SimpleMonoclinic />
+            <div className='w-1/2 pointer-events-none'>
+              <SimpleMonoclinic />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -268,18 +314,22 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Monoclinica Centrada en la Base'}
             colorPalette={colorPalette}
             structureName={10}>
-            <BaseCenteredMonoclinic />
+            <div className='w-1/2 pointer-events-none'>
+              <BaseCenteredMonoclinic />
+            </div>
           </StructureButton>
 
           {/* OTHER STRUCTURES */}
-          <div className='w-full mb-2 mt-4 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Otras estructuras</b></div>
+          <div className='w-full mb-2 text-center text-xl md:mt-2' style={{ color: colorPalette.textTitles }}><b>Otras estructuras</b></div>
           <StructureButton
             onClick={handleFigure}
             value={'Hexagonal'}
             isSelected={selectedFigure === 'Hexagonal'}
             colorPalette={colorPalette}
             structureName={11}>
-            <HexagonalIcon />
+            <div className='w-1/2 pointer-events-none'>
+              <HexagonalIcon />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -287,7 +337,9 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Romboedrica'}
             colorPalette={colorPalette}
             structureName={12}>
-            <RhombohedralIcon />
+            <div className='w-1/2 pointer-events-none'>
+              <RhombohedralIcon />
+            </div>
           </StructureButton>
           <StructureButton
             onClick={handleFigure}
@@ -295,7 +347,9 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Triclinica'}
             colorPalette={colorPalette}
             structureName={13}>
-            <TriclinicIcon />
+            <div className='w-1/2 pointer-events-none'>
+              <TriclinicIcon />
+            </div>
           </StructureButton>
         </div>
       </Controls3D>

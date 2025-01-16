@@ -43,12 +43,10 @@ export default function ElementData() {
       crystalStructure: data[24],
     }
 
-  window.scrollTo(0, 0);
-
   for (let i = 0; i < 118; i++) {
     elementLinks.push(
       <button key={i} value={Table.Row[i].Cell[0]}
-      disabled={(currentElementNumber === i + 1)}
+        disabled={(currentElementNumber === i + 1)}
         className='unselectable stroke-2 my-2 transition-all element-link w850:w-full'
         style={{ stroke: colorPalette.text, color: (currentElementNumber === i + 1) ? colorPalette.buttonHover : colorPalette.text, fontWeight: (currentElementNumber === i + 1) ? 'bold' : 'normal' }}>
         <NavLink draggable={false} to={`/element/${Table.Row[i].Cell[0]}`}
@@ -56,8 +54,8 @@ export default function ElementData() {
           {Table.Row[i].Cell[2]}
           {
             windowSize.width >= 850 && (
-              <ElementLinkIcon className='w-6 h-auto inline-block' 
-              style={{ strokeWidth: (currentElementNumber === i + 1) ? 3 : 2, stroke: (currentElementNumber === i + 1) ? colorPalette.buttonHover : colorPalette.text }} />
+              <ElementLinkIcon className='w-6 h-auto inline-block'
+                style={{ strokeWidth: (currentElementNumber === i + 1) ? 3 : 2, stroke: (currentElementNumber === i + 1) ? colorPalette.buttonHover : colorPalette.text }} />
             )
           }
         </NavLink>
@@ -78,10 +76,12 @@ export default function ElementData() {
     };
   }, []);
 
+  useEffect(() => {window.scrollTo(0, 0)}, [atomicNumber]);
+
   return (
     <>
       <section id='element-data'
-        className='justify-between flex flex-wrap px-7 md:px-8 flex-grow
+        className='justify-between flex flex-wrap px-7 md:px-8 flex-grow h-full
         w850:h-full w850:pl-4 w850:pr-0 w850:no-scrollbar w850:overflow-y-hidden
         xl:pl-5'
         style={{ backgroundColor: colorPalette.background }}>
@@ -102,7 +102,7 @@ export default function ElementData() {
         </article>
 
         {/* DESCRIPCION */}
-        <article id='element-description' className='w-full overflow-y-scroll w850:w-3/5 order-first w850:order-2 w850:border-x w850:px-3 xl:w-2/3 h-full'
+        <article id='element-description' className='w-full overflow-y-scroll w850:w-3/5 order-first w850:order-2 w850:border-x w850:px-3 xl:w-2/3 w850:h-full'
           style={{ borderColor: colorPalette.lines3d }}>
           <div className='flex justify-between w-full border-b pb-3 mb-2 mt-4'
             style={{ borderColor: colorPalette.lines3d }}>
@@ -140,7 +140,7 @@ export default function ElementData() {
         </article>
 
         {/* PROPIEDADES */}
-        <article id='properties' className='w-full order-2 w850:pt-4 w850:w-1/5 w850:order-last xl:w-1/6 h-full w850:overflow-y-scroll w850:scrollbar pb-7'>
+        <article id='properties' className='w-full order-2 w850:pt-4 w850:w-1/5 w850:order-last xl:w-1/6 w850:h-full w850:overflow-y-scroll w850:scrollbar pb-7'>
           <span className='block w850:pl-4 text-4xl border-b pb-2 mb-2 w850:text-base w850:border-0 w850:mb-1'
             style={{ borderColor: colorPalette.lines3d }}>
             <b style={{ color: colorPalette.textTitles }}>Propiedades</b>
@@ -174,66 +174,65 @@ export default function ElementData() {
             </div>
           </div>
         </article>
+        <style>{`
+          @media (min-width: 850px) {
+            #content::-webkit-scrollbar {
+              display: none;
+            }
+            body::-webkit-scrollbar {
+              display: none;
+            }
+            #other-elements::-webkit-scrollbar, #properties::-webkit-scrollbar {
+              width: 8px;
+            }
+            #other-elements::-webkit-scrollbar-thumb, #properties::-webkit-scrollbar-thumb {
+              background: ${colorPalette.scrollbarThumb};
+              border: none;
+              border-radius: 6px;
+            }
+            #other-elements::-webkit-scrollbar-track, #properties::-webkit-scrollbar-track {
+              background: ${colorPalette.scrollbarTrack};
+            }
+            #other-elements::-webkit-scrollbar-thumb:hover, #properties::-webkit-scrollbar-thumb:hover {
+              background: ${colorPalette.scrollbarThumbHover};
+            }
+            #element-description::-webkit-scrollbar {
+              width: 8px;
+            }
+            #element-description::-webkit-scrollbar-thumb {
+              background: ${colorPalette.scrollbarThumb};
+              border: none;
+              border-radius: 6px;
+            }
+            #element-description::-webkit-scrollbar-track {
+              background: ${colorPalette.scrollbarTrack};
+            }
+            #element-description::-webkit-scrollbar-thumb:hover {
+              background: ${colorPalette.scrollbarThumbHover};
+            }
+          }
+
+          @media (max-width: 850px) {
+            #element-description::-webkit-scrollbar {
+              display: none;
+            }
+          }
+
+
+          .element-link:hover {
+            color: '${colorPalette.buttonHover};'
+            font-weight: bold;
+            stroke-width: 3;
+          }
+
+          .nextprev:hover {
+            color: ${colorPalette.buttonHover};
+            font-weight: bold;
+            stroke-width: 2;
+          }
+          `}
+        </style>
       </section>
-      <style>{`
-
-        @media (min-width: 850px) {
-          #content::-webkit-scrollbar {
-            display: none;
-          }
-          body::-webkit-scrollbar {
-            display: none;
-          }
-          #other-elements::-webkit-scrollbar, #properties::-webkit-scrollbar {
-            width: 8px;
-          }
-          #other-elements::-webkit-scrollbar-thumb, #properties::-webkit-scrollbar-thumb {
-            background: ${colorPalette.scrollbarThumb};
-            border: none;
-            border-radius: 6px;
-          }
-          #other-elements::-webkit-scrollbar-track, #properties::-webkit-scrollbar-track {
-            background: ${colorPalette.scrollbarTrack};
-          }
-          #other-elements::-webkit-scrollbar-thumb:hover, #properties::-webkit-scrollbar-thumb:hover {
-            background: ${colorPalette.scrollbarThumbHover};
-          }
-          #element-description::-webkit-scrollbar {
-            width: 8px;
-          }
-          #element-description::-webkit-scrollbar-thumb {
-            background: ${colorPalette.scrollbarThumb};
-            border: none;
-            border-radius: 6px;
-          }
-          #element-description::-webkit-scrollbar-track {
-            background: ${colorPalette.scrollbarTrack};
-          }
-          #element-description::-webkit-scrollbar-thumb:hover {
-            background: ${colorPalette.scrollbarThumbHover};
-          }
-        }
-
-        @media (max-width: 850px) {
-          #element-description::-webkit-scrollbar {
-            display: none;
-          }
-        }
-        
-        
-        .element-link:hover {
-          color: '${colorPalette.buttonHover};'
-          font-weight: bold;
-          stroke-width: 3;
-        }
-
-        .nextprev:hover {
-          color: ${colorPalette.buttonHover};
-          font-weight: bold;
-          stroke-width: 2;
-        }
-      `}
-      </style>
     </>
   );
 }

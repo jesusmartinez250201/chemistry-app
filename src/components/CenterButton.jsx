@@ -5,7 +5,7 @@ const CenterButton = React.memo(({ onClick, children, colorPalette }) => {
 
   return (
     <button
-      className='w-36 flex px-5 py-1 items-center rounded hover:transition-all'
+      className='w-36 flex px-5 my-1 py-1 items-center rounded hover:transition-all'
       onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}

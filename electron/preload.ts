@@ -57,6 +57,12 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
   restore() {
     ipcRenderer.send("app-restore");
   },
+  isFullScreen() {
+    return ipcRenderer.sendSync("full-screen");
+  },
+  setFullScreen(value: boolean) {
+    ipcRenderer.send("set-full-screen", value);
+  },
 });
 
 contextBridge.exposeInMainWorld("data", {

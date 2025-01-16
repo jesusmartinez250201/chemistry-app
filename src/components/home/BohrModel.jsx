@@ -113,7 +113,7 @@ export default function BohrModel() {
   return (
     <>
       <h2
-        className='text-3xl text-center unselectable'
+        className='text-center unselectable'
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         style={{ color: colorPalette.text }}>

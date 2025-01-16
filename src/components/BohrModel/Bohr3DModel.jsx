@@ -50,7 +50,7 @@ export default function Bohr3DModel({ isReal, atomicNumber, onCenterCamera, came
     }
 
   return (
-  <Canvas style={{ backgroundColor: colorPalette.background }}>
+  <Canvas className='flex-grow' style={{ backgroundColor: colorPalette.background }}>
       <CamControls />
       <ambientLight intensity={1.2} />
       <pointLight position={[0, 1, 6]} intensity={4} />

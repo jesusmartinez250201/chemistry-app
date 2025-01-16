@@ -61,17 +61,17 @@ export default function TitleBar() {
   //       console.log(`Memory Usage: ${(memorySum/1024).toFixed(2)} MB`)
   //       console.log(`CPU Usage: ${cpuSum.toFixed(2)}%`)
   //     })
-  //     // window.ipcRenderer.invoke('app-metrics').then(data => {
-  //     //   //console.log(parseFloat(data.private/1024).toFixed(2))
-  //     //   console.log(data)
-  //     // })
-  //     // const cpuUsage = parseFloat(window.ipcRenderer.getAppMetrics().cpu.percentCPUUsage.toFixed(2))
-  //     // const memoryUsage = (window.ipcRenderer.getAppMetrics().memory.swapFree / 1024).toFixed(2);
-  //     // console.log(`CPU Usage: ${cpuUsage}%`)
-  //     // console.log(`Memory Usage: ${memoryUsage}`)
-  //     // performanceData.data.push({ seconds, cpuUsage, memoryUsage })
-  //     // console.log(`Time: ${seconds} seconds, CPU Usage: ${cpuUsage}%`)
-  //     // seconds += 1
+  // window.ipcRenderer.invoke('app-metrics').then(data => {
+  //   //console.log(parseFloat(data.private/1024).toFixed(2))
+  //   console.log(data)
+  // })
+  // const cpuUsage = parseFloat(window.ipcRenderer.getAppMetrics().cpu.percentCPUUsage.toFixed(2))
+  // const memoryUsage = (window.ipcRenderer.getAppMetrics().memory.swapFree / 1024).toFixed(2);
+  // console.log(`CPU Usage: ${cpuUsage}%`)
+  // console.log(`Memory Usage: ${memoryUsage}`)
+  // performanceData.data.push({ seconds, cpuUsage, memoryUsage })
+  // console.log(`Time: ${seconds} seconds, CPU Usage: ${cpuUsage}%`)
+  // seconds += 1
   //   }, 1000)
   //   return () => clearInterval(interval)
   // }, [])
@@ -107,22 +107,28 @@ export default function TitleBar() {
           style={{ backgroundColor: hover.minimize ? colorPalette.buttonsNavbarHover : 'transparent' }}>
           <MinimizeIcon className={'w-9 h-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
         </button>
-        <button type="button" value={'maximize'} ref={maximizeRef}
-          className="flex items-center justify-center title-button transition-all"
-          onClick={() => window.ipcRenderer.maximize()}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleHover}
-          style={{ backgroundColor: hover.maximize ? colorPalette.buttonsNavbarHover : 'transparent', display: isMaximized ? 'none' : 'flex' }}>
-          <MaximizeIcon className={'w-9 h-auto m-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
-        </button>
-        <button type="button" value={'restore'} ref={restoreRef}
-          className="flex items-center justify-center title-button transition-all"
-          onClick={() => window.ipcRenderer.restore()}
-          onMouseEnter={handleHover}
-          onMouseLeave={handleHover}
-          style={{ backgroundColor: hover.restore ? colorPalette.buttonsNavbarHover : 'transparent', display: isMaximized ? 'flex' : 'none' }}>
-          <RestoreIcon className={'w-9 h-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
-        </button>
+        {
+          !window.ipcRenderer.isFullScreen() && (
+            <>
+              <button type="button" value={'maximize'} ref={maximizeRef}
+                className="flex items-center justify-center title-button transition-all"
+                onClick={() => window.ipcRenderer.maximize()}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                style={{ backgroundColor: hover.maximize ? colorPalette.buttonsNavbarHover : 'transparent', display: isMaximized ? 'none' : 'flex' }}>
+                <MaximizeIcon className={'w-9 h-auto m-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
+              </button>
+              <button type="button" value={'restore'} ref={restoreRef}
+                className="flex items-center justify-center title-button transition-all"
+                onClick={() => window.ipcRenderer.restore()}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                style={{ backgroundColor: hover.restore ? colorPalette.buttonsNavbarHover : 'transparent', display: isMaximized ? 'flex' : 'none' }}>
+                <RestoreIcon className={'w-9 h-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
+              </button>
+            </>
+          )
+        }
         <button type="button" value={'close'} ref={closeRef}
           className="flex items-center justify-center title-button transition-all"
           onClick={() => window.ipcRenderer.quit()}

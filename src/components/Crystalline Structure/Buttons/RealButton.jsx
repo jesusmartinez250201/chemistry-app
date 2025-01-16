@@ -6,7 +6,7 @@ export const RealButton = React.memo(({ onClick, value, isSelected, colorPalette
 
   return (
     <button
-      className='w-36 px-5 flex flex-col items-center justify-around rounded hover:transition-all'
+      className='w-24 px-5 flex flex-col items-center justify-around rounded hover:transition-all'
       onClick={onClick}
       value={value}
       onMouseEnter={() => setHover(true)}
@@ -27,7 +27,7 @@ export const IdealButton = React.memo(({ onClick, value, isSelected, colorPalett
 
   return (
     <button
-      className='w-36 px-5 flex flex-col items-center justify-around rounded hover:transition-all'
+      className='w-24 px-5 flex flex-col items-center justify-around rounded hover:transition-all'
       onClick={onClick}
       value={value}
       onMouseEnter={() => setHover(true)}

@@ -18,6 +18,10 @@ if (!store.get("colorPalettesSet")) {
   store.set("colorPalettesSet", true);
 }
 
+if (store.get("full-screen") === undefined) {
+  store.set("full-screen", true);
+}
+
 // The built directory structure
 //
 // ├─┬─┬ dist
@@ -55,13 +59,16 @@ function createWindow() {
 
   win = new BrowserWindow({
     autoHideMenuBar: true,
+    height: 650,
+    width: 664,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
     },
     show: false,
     minWidth: 664,
-    minHeight: 630,
+    minHeight: 650,
     frame: false,
+    fullscreen: store.get("full-screen") as boolean,
   });
 
   if (VITE_DEV_SERVER_URL) {
@@ -102,6 +109,12 @@ function createWindow() {
       ) {
         event.preventDefault();
         win.reload();
+      } else if (input.code === "F11") {
+        if (win.isFullScreen()) {
+          win.setFullScreen(false);
+        } else {
+          win.setFullScreen(true);
+        }
       }
     }
   });
@@ -164,6 +177,13 @@ app.whenReady().then(createWindow);
 // ipcMain.handle("get-app-path", async () => {
 //   return app.getPath('userData');
 // });
+ipcMain.on("full-screen", async (event) => {
+  event.returnValue = win ? win.isFullScreen() : false;
+});
+ipcMain.on("set-full-screen", async (_, value) => {
+  store.set("full-screen", value);
+  win?.setFullScreen(value);
+});
 ipcMain.on("electron-store-get", async (event, val) => {
   event.returnValue = store.get(val);
 });

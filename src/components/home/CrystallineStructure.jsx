@@ -61,7 +61,7 @@ export default function CrystallineStructure() {
   return (
     <>
       <h2
-        className='text-center text-3xl unselectable'
+        className='text-center unselectable'
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         style={{ color: colorPalette.text }}

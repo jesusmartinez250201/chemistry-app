@@ -4,7 +4,16 @@ export default function PeriodicTable() {
   const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
   return (
-    <div className="periodic w-19/20 max-w-[1200px] mx-auto pt-4 xl:pt-7" >
+    <div id='periodic-table' className="periodic w-19/20 max-w-[1000px] mx-auto mt-0
+      xl:my-0" >
+      <style>{
+        `@media (max-height: 680px) and (max-width: 600px) {
+            #periodic-table {
+              margin-top: 9vh;
+              margin-bottom: 10vh;
+            }
+          }`
+      }</style>
       <div className="periodic-row">
         <Element
           atomicNumber={1}
@@ -1034,8 +1043,9 @@ export default function PeriodicTable() {
           md:left-10/25 w850:top-7 
           w850:text-xs 
           lg:left-9/25 lg:text-sm lg:top-10
-          w1200:left-10/25 w1200:text-base w1200:top-12 unselectable'>
-        <div className='flex flex-col items-start w-24 w850:mr-2 lg:w-40'>
+          w1200:left-10/25 w1200:top-10 w1200:text-xs 
+          xl:left-19/50 unselectable'>
+        <div className='flex flex-col items-start w-24 w850:mr-2 lg:w-auto'>
           <div className='flex items-center mb-0.5'>
             <span className='type-1 w-4 h-4'></span>
             <span className='ml-1 flex-1 leading-3 lg:leading-4'
@@ -1071,7 +1081,7 @@ export default function PeriodicTable() {
           </div>
         </div>
 
-        <div className='flex flex-col items-start w-24 lg:w-28 w1200:w-32'>
+        <div className='flex flex-col items-start w-24 lg:w-28 w1200:w-auto'>
           <div className='flex items-center my-0.5'>
             <span className='type-6 w-4 h-4'></span>
             <span className='ml-1'

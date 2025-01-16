@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const RealButton = React.memo(({ onClick, value, children, isSelected, colorPalette }) => {
+const IdealButton = React.memo(({ onClick, value, children, isSelected, colorPalette }) => {
   const [hover, setHover] = useState(false);
 
   return (
     <button
-      className='w-28 px-5 flex flex-col items-center justify-center rounded hover:transition-all'
+      className='w-9/20 my-1 rounded hover:transition-all'
       onClick={onClick}
       value={value}
       onMouseEnter={() => setHover(true)}
@@ -22,4 +22,4 @@ const RealButton = React.memo(({ onClick, value, children, isSelected, colorPale
   );
 });
 
-export default RealButton;
+export default IdealButton;
