@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react';
-import { Edges, Line } from '@react-three/drei';
+import { Edges, Line, Text, Billboard } from '@react-three/drei';
 import { cubics } from '../../utils/CrystallineStructuresData.json'
 import { Table } from '../../utils/ElementsData.json';
 
@@ -26,7 +26,16 @@ export function CubicSimple({ isReal, showUnitCell, onPutStructure }) {
         material: poloniumName,
         symbol: poloniumSymbol
       }
-    ]
+    ],
+    axis:
+      <div style={{ color: colorPalette.text }}>
+        <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a = b = c</span>
+      </div>,
+    volume:
+      <div style={{ color: colorPalette.text }}>
+        <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>a<sup>3</sup></span>
+      </div>,
+    info: <span>Todos los ángulos son de 90°</span>
   }), [
     structureName,
     poloniumName,
@@ -65,6 +74,52 @@ export function CubicSimple({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.2, -0.3, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1, -0.3, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.2, -1, -0.4]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, -1, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1, -1, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1, -1, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1, -1, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        
         <mesh position={[0, 0, 0]}>
           <boxGeometry args={data.box.args} />
           <meshStandardMaterial visible={false} />
@@ -102,6 +157,15 @@ export function CubicBodyCentered({ isReal, showUnitCell, onPutStructure }) {
           symbol: ironSymbol
         }
       ],
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a = b = c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>a<sup>3</sup></span>
+        </div>,
+        info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       ironName,
@@ -141,6 +205,51 @@ export function CubicBodyCentered({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.2, -0.3, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1, -0.3, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.2, -1, -0.4]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, -1, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1, -1, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1, -1, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1, -1, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         <mesh position={[0, 0, 0]}>
           <boxGeometry args={data.box.args} />
           <meshStandardMaterial visible={false} />
@@ -183,7 +292,16 @@ export function CubicFaceCentered({ isReal, showUnitCell, onPutStructure }) {
           material: nickelName,
           symbol: nickelSymbol
         }
-      ]
+      ],
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a = b = c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>a<sup>3</sup></span>
+        </div>,
+      info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       nickelName,
@@ -220,6 +338,51 @@ export function CubicFaceCentered({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.7, -0.1, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1, -0.7, 0.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1, -0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, -1, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.1, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1, -1, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1, -1, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1, -1, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         <mesh position={[0, 0, 0]}>
           <boxGeometry args={data.box.args} />
           <meshStandardMaterial visible={false} />

@@ -1,11 +1,11 @@
 import HomeMenu from "./components/home/HomeMenu";
 import ElementData from "./components/PeriodicTable/ElementData";
 import { Routes, Route, HashRouter, useLocation } from "react-router-dom";
-import { Test } from "./components/home/Test";
 import CrystallineStructure from "./components/Crystalline Structure/CrystallineStructure";
 import BohrModelPage from "./components/BohrModel/BohrModelPage";
 import BondsPage from "./components/Bonds/BondsPage";
 import SettingsPage from "./components/SettingsPage";
+import About from "./components/About";
 import TitleBar from "./components/TitleBar";
 import Navbar from "./components/Navbar";
 import { useEffect } from "react";
@@ -39,7 +39,6 @@ function AppContent() {
       >
         <Routes>
           <Route path="/" element={<HomeMenu />} />
-          <Route path="/test" element={<Test />} />
           <Route path="/element/:atomicNumber" element={<ElementData />} />
           <Route
             path="CrystallineStructure"
@@ -48,6 +47,7 @@ function AppContent() {
           <Route path="BohrModel" element={<BohrModelPage />} />
           <Route path="Bonds" element={<BondsPage />} />
           <Route path="Settings" element={<SettingsPage />} />
+          <Route path="About" element={<About />} />
         </Routes>
       </div>
       <ScrollStyleConfig />

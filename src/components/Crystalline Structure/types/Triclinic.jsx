@@ -1,6 +1,6 @@
 import { triclinic } from '../../utils/CrystallineStructuresData.json'
 import { Table } from '../../utils/ElementsData.json';
-import { Line } from '@react-three/drei';
+import { Edges, Line, Text, Billboard } from '@react-three/drei';
 import { useMemo, useEffect } from 'react';
 
 const SCALE = [0.0052, 0.0052, 0.0052];
@@ -82,7 +82,35 @@ export default function Triclinic({ isReal, showUnitCell, onPutStructure }) {
           symbol: oxygenSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a ≠ b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }} className='flex flex-nowrap'>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b>
+          <span className='flex'>
+            abc
+            <math>
+              <msqrt>
+                <mrow>
+                  <mi>1 - cos</mi><msup><mo>⁡</mo><mn>2</mn></msup>
+                  <mi>⁡α - cos</mi><msup><mo>⁡</mo><mn>2</mn></msup>
+                  <mi>β - cos</mi><msup><mo>⁡</mo><mn>2</mn></msup>
+                  <mn>⁡γ + 2</mn>
+                  <mi>cos</mi>
+                  <mn>⁡α</mn>
+                  <mi>cos</mi>
+                  <mn>⁡β</mn>
+                  <mi>cos</mi>
+                  <mn>⁡γ</mn>
+                </mrow>
+              </msqrt>
+            </math>
+          </span>
+        </div>,
+      info: <span>Todos los ángulos son distintos y ninguno es equivalente a 90°.</span>
     }), [
       structureName,
       materialName,
@@ -154,6 +182,51 @@ export default function Triclinic({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.1, -1.1, 1.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-0.5, -0.3, -.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[1.5, -0.7, -0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.3, -1.9, 1.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[2.3, -1.1, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.5, -0.5, 1.2]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-0.9, -1.8, 1.2]} rotation={[0, 0.0005, 0]}>
+          <circleGeometry args={[0.75, 32, 0, 1.795]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-0.2, -0.5, -1.2]} rotation={[2.1, -1.195, 0.235, 'XZY']}>
+          <circleGeometry args={[0.75, 32, 1.595, 1.985]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[2.4, -0.5, -1.2]} rotation={[2.07, 0, 0]}>
+          <circleGeometry args={[0.75, 32, 3.14, -1.32]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           idealPotassiumAtoms.map((position, index) => (
             <mesh position={position} key={index}>

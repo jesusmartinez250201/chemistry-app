@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 //import { createRequire } from 'node:module'
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -9,6 +9,8 @@ import { colorPalettes } from '../src/components/utils/ColorPalettes.json';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const store = new Store();
+
+const versionPhase = "alpha";
 
 store.set("colorPalettes", ""); //Restore default color palettes
 store.set("colorPalettes", colorPalettes);
@@ -59,17 +61,19 @@ function createWindow() {
 
   win = new BrowserWindow({
     autoHideMenuBar: true,
-    height: 650,
     width: 664,
+    height: 768,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
     },
     show: false,
     minWidth: 664,
-    minHeight: 650,
+    minHeight: 768,
     frame: false,
     fullscreen: store.get("full-screen") as boolean,
   });
+
+  win.maximize();
 
   if (VITE_DEV_SERVER_URL) {
     win.loadURL(VITE_DEV_SERVER_URL);
@@ -177,6 +181,12 @@ app.whenReady().then(createWindow);
 // ipcMain.handle("get-app-path", async () => {
 //   return app.getPath('userData');
 // });
+ipcMain.on("app-version", async (event) => {
+  event.returnValue = versionPhase + ' ' + app.getVersion();
+});
+ipcMain.on("open-external", async (_, url) => {
+  shell.openExternal(url);
+});
 ipcMain.on("full-screen", async (event) => {
   event.returnValue = win ? win.isFullScreen() : false;
 });

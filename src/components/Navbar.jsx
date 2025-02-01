@@ -3,13 +3,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Arrow from "./Icons/Arrow";
 import HomeIcon from "./Icons/HomeIcon";
 import SettingsIcon from "./Icons/SettingsIcon";
+import AboutIcon from "./Icons/AboutIcon";
 
 export default function Navbar() {
   const navigate = useNavigate(),
     navbarRef = useRef(),
     location = useLocation(),
     colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')],
-    [hover, setHover] = useState({ back: false, home: false, homeIcon: false, forward: false, settings: false, settingsIcon: false }),
+    [hover, setHover] = useState({ back: false, home: false, homeIcon: false, forward: false, settings: false, settingsIcon: false, about: false, aboutIcon: false }),
     handleGoBack = () => {
       window.history.back();
     },
@@ -18,7 +19,7 @@ export default function Navbar() {
     }
 
   useEffect(() => {
-    setHover({ back: false, home: false, homeIcon: false, forward: false, settings: false, settingsIcon: false })
+    setHover({ back: false, home: false, homeIcon: false, forward: false, settings: false, settingsIcon: false, about: false, aboutIcon: false })
   }, [location.pathname])
 
   return (
@@ -63,6 +64,16 @@ export default function Navbar() {
 
           <div className="flex-grow"></div>
 
+          {location.pathname !== '/About' && (
+            <li className="flex transition hover:duration-150"
+              onMouseEnter={() => setHover(prev => ({ ...prev, about: true, aboutIcon: true }))}
+              onMouseLeave={() => setHover(prev => ({ ...prev, about: false, aboutIcon: false }))}
+              style={{ backgroundColor: hover.about ? colorPalette.buttonsNavbarHover : 'transparent' }}>
+              <button onClick={() => navigate('/About')} className="flex pl-2 pr-2 py-3 items-center ">
+                <AboutIcon />
+              </button>
+            </li>
+          )}
           {
             location.pathname !== '/Settings' && (
               <li className="flex transition hover:duration-150"

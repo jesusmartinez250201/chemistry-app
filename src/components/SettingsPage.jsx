@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
+import FullScreenContext from "./context/fullScreenContext";
 import { colorPalettes } from './utils/ColorPalettes.json';
 
 window.data.store.set('colorPalettes', colorPalettes);
@@ -7,19 +8,29 @@ const colorPalette = window.data.store.get('colorPalettes')[window.data.store.ge
 export default function SettingsPage() {
   const [selectedPalette, setSelectedPalette] = useState(window.data.store.get('selectedColorPalette')),
     [hover, setHover] = useState(false),
-    [fullScreen, setFullScreen] = useState(window.ipcRenderer.isFullScreen()),
+    { isFullScreen, toggleFullScreen } = useContext(FullScreenContext),
+    [fullScreenChecked, setFullScreenChecked] = useState(isFullScreen),
     fullScreenRef = useRef(),
     handleChange = (e) => {
       setSelectedPalette(e.target.value);
     },
     applyConfig = () => {
       window.data.store.set('selectedColorPalette', selectedPalette);
-      window.ipcRenderer.setFullScreen(fullScreenRef.current.checked);
+      handleFullScreenToggle();
       window.location.reload();
     },
-    handleFullScreen = () => {
-      setFullScreen(!fullScreen);
-    }
+    handleFullScreenChange = (e) => {
+      setFullScreenChecked(e.target.checked);
+    },
+    handleFullScreenToggle = () => {
+      if (fullScreenRef.current.checked !== isFullScreen) {
+        toggleFullScreen();
+      }
+    };
+
+  useEffect(() => {
+    setFullScreenChecked(isFullScreen);
+  }, [isFullScreen]);
 
   return (
     <div className='max-w-[700px] mt-10
@@ -35,9 +46,8 @@ export default function SettingsPage() {
       <div className="mt-1 mx-9">
         <span className="flex w-full py-2 border-b"
           style={{ borderColor: colorPalette.text }}>
-          <input ref={fullScreenRef} type="checkbox" name="f-screen" id="full-screen" checked={fullScreen} onChange={handleFullScreen}
-            style={{ accentColor: colorPalette.checkbox }} />
-          <label htmlFor="full-screen" className="text-xl font-bold ml-2" style={{ color: colorPalette.text }}>Pantalla completa</label>
+          <input ref={fullScreenRef} type="checkbox" name="f-screen" id="full-screen" checked={fullScreenChecked} onChange={handleFullScreenChange} style={{ accentColor: colorPalette.checkbox }} />
+          <label htmlFor="full-screen" className="text-xl font-bold ml-2" style={{ color: colorPalette.text }}>Pantalla completa (F11)</label>
         </span>
         <div className="w-full py-2 border-b"
           style={{ borderColor: colorPalette.text }}>

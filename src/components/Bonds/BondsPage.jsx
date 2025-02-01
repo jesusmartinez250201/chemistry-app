@@ -245,50 +245,6 @@ export default function BondsPage() {
             </MoleculeButton>
           </div>
 
-          {/* ORGANIC MOLECULES */}
-          <h2 className='w-full text-md w850:text-center'><b>Moleculas organicas</b></h2>
-          <div className='w-full flex justify-evenly my-1'>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'acetone'}
-              isSelected={selectedMolecule === 'acetone'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
-                  Acetona
-                </div>
-                <div className='text-md 2xl:text-lg'>
-                  <b>C<sub>3</sub>H<sub>6</sub>O</b>
-                </div>
-              </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'aspirin'}
-              isSelected={selectedMolecule === 'aspirin'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
-                  Ácido acetilsalicílico
-                </div>
-                <div className='text-md 2xl:text-lg'>
-                  <b>C<sub>9</sub>H<sub>8</sub>O<sub>4</sub></b>
-                </div>
-              </div>
-            </MoleculeButton>
-            <MoleculeButton
-              onClick={handleSelectedMolecule} value={'glucose'}
-              isSelected={selectedMolecule === 'glucose'}
-              colorPalette={colorPalette}>
-              <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
-                  Glucosa
-                </div>
-                <div className='text-md 2xl:text-lg'>
-                  <b>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></b>
-                </div>
-              </div>
-            </MoleculeButton>
-          </div>
-
           {/* METALLIC BONDS */}
           <h2 className='w-full text-md w850:text-center'><b>Enlaces metálicos</b></h2>
           <div className='w-full flex justify-evenly my-1'>
@@ -328,6 +284,50 @@ export default function BondsPage() {
                 </div>
                 <div className='text-md 2xl:text-lg'>
                   <b>Ti</b>
+                </div>
+              </div>
+            </MoleculeButton>
+          </div>
+
+          {/* ORGANIC MOLECULES */}
+          <h2 className='w-full text-md w850:text-center'><b>Puentes de hidrógeno</b></h2>
+          <div className='w-full flex justify-evenly my-1'>
+            <MoleculeButton
+              onClick={handleSelectedMolecule} value={'acetone'}
+              isSelected={selectedMolecule === 'acetone'}
+              colorPalette={colorPalette}>
+              <div className='pointer-events-none'>
+                <div className='text-sm 2xl:text-base'>
+                  Acetona
+                </div>
+                <div className='text-md 2xl:text-lg'>
+                  <b>C<sub>3</sub>H<sub>6</sub>O</b>
+                </div>
+              </div>
+            </MoleculeButton>
+            <MoleculeButton
+              onClick={handleSelectedMolecule} value={'aspirin'}
+              isSelected={selectedMolecule === 'aspirin'}
+              colorPalette={colorPalette}>
+              <div className='pointer-events-none'>
+                <div className='text-sm 2xl:text-base'>
+                  Ácido acetilsalicílico
+                </div>
+                <div className='text-md 2xl:text-lg'>
+                  <b>C<sub>9</sub>H<sub>8</sub>O<sub>4</sub></b>
+                </div>
+              </div>
+            </MoleculeButton>
+            <MoleculeButton
+              onClick={handleSelectedMolecule} value={'glucose'}
+              isSelected={selectedMolecule === 'glucose'}
+              colorPalette={colorPalette}>
+              <div className='pointer-events-none'>
+                <div className='text-sm 2xl:text-base'>
+                  Glucosa
+                </div>
+                <div className='text-md 2xl:text-lg'>
+                  <b>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></b>
                 </div>
               </div>
             </MoleculeButton>

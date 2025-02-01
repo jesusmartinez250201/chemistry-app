@@ -1,4 +1,4 @@
-import { Line } from '@react-three/drei'
+import { Edges, Line, Text, Billboard } from '@react-three/drei';
 import { hexagonal } from '../../utils/CrystallineStructuresData.json'
 import { Table } from '../../utils/ElementsData.json';
 import { useMemo, useEffect } from 'react';
@@ -46,7 +46,16 @@ export default function Hexagonal({ isReal, onPutStructure }) {
           symbol: carbonSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a = b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>0.866a<sup>2</sup>c</span>
+        </div>,
+      info: <span>El ángulo entre a y b es de 120°. Todos los ángulos son iguales y ninguno es de 90°.</span>
     }), [
       structureName,
       materialName,
@@ -63,9 +72,9 @@ export default function Hexagonal({ isReal, onPutStructure }) {
       aluminiumSymbol
     ]);
 
-    useEffect(() => {
-      onPutStructure(structureData);
-    }, [onPutStructure, structureData]);
+  useEffect(() => {
+    onPutStructure(structureData);
+  }, [onPutStructure, structureData]);
 
   if (isReal) {
     return (
@@ -86,12 +95,37 @@ export default function Hexagonal({ isReal, onPutStructure }) {
             </mesh>
           ))
         }
-        
+
       </group>
     )
   } else {
     return (
       <group>
+        <Billboard position={[-0.5, -1.3, 0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 120°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1.6, 1.4]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[-1.3, -1.6, 0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[0.9, 0, 1.2]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-0.75, -1.5, 1.299]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, -2.0944, 2.0944]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           idealEdges.map((edge, index) => (
             <Line points={edge} color={colorPalette.lines3d} key={index} />

@@ -1,6 +1,6 @@
 import { orthorhombics } from '../../utils/CrystallineStructuresData.json'
 import { Table } from '../../utils/ElementsData.json';
-import { Edges, Line } from '@react-three/drei'
+import { Edges, Line, Text, Billboard } from '@react-three/drei';
 import { useEffect, useMemo } from 'react';
 
 const SCALE = [0.0052, 0.0052, 0.0052];
@@ -56,7 +56,16 @@ export function OrthorhombicSimple({ isReal, showUnitCell, onPutStructure }) {
           symbol: sulfurSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a ≠ b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>abc</span>
+        </div>,
+      info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       materialName,
@@ -122,6 +131,51 @@ export function OrthorhombicSimple({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.4, -0.9, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1.3, -0.8, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.3, -1.5, -0.5]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1.5, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, -1.5, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1.3, -1.5, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1.3, -1.5, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1.3, -1.5, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           sulfurAtoms.map((position, index) => (
             <mesh position={position} key={index}>
@@ -179,7 +233,16 @@ export function OrthorhombicBaseCentered({ isReal, showUnitCell, onPutStructure 
           symbol: oxygenSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a ≠ b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>abc</span>
+        </div>,
+      info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       materialName,
@@ -241,6 +304,51 @@ export function OrthorhombicBaseCentered({ isReal, showUnitCell, onPutStructure 
   } else {
     return (
       <group>
+        <Billboard position={[-0.4, -0.9, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1.3, -0.8, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.3, -1.5, -0.5]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1.5, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, -1.5, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1.3, -1.5, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1.3, -1.5, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1.3, -1.5, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           orthorhombics.baseCentered.ideal.atoms.calcium.positions.map((position, index) => (
             <mesh position={position} key={index}>
@@ -316,7 +424,16 @@ export function OrthorhombicBodyCentered({ isReal, showUnitCell, onPutStructure 
           symbol: oxygenSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a ≠ b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>abc</span>
+        </div>,
+      info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       materialName,
@@ -377,6 +494,51 @@ export function OrthorhombicBodyCentered({ isReal, showUnitCell, onPutStructure 
   } else {
     return (
       <group>
+        <Billboard position={[-0.4, -0.9, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1.3, -0.8, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.3, -1.5, -0.5]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1.5, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, -1.5, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1.3, -1.5, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1.3, -1.5, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1.3, -1.5, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           orthorhombics.bodyCentered.ideal.atoms.calcium.positions.map((position, index) => (
             <mesh position={position} key={index}>
@@ -452,7 +614,16 @@ export function OrthorhombicFaceCentered({ isReal, showUnitCell, onPutStructure 
           symbol: oxygenSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a ≠ b ≠ c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b><span>abc</span>
+        </div>,
+      info: <span>Todos los ángulos son de 90°</span>
     }), [
       structureName,
       materialName,
@@ -513,6 +684,51 @@ export function OrthorhombicFaceCentered({ isReal, showUnitCell, onPutStructure 
   } else {
     return (
       <group>
+        <Billboard position={[-0.4, -0.9, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-1.3, -0.8, 0.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.2, -1.5, -0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ = 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0, -1.5, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, -1.5, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.4, 0, 1.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-1.3, -1.5, 1]}>
+          <circleGeometry args={[0.75, 32, 0, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-1.3, -1.5, 1]} rotation={[0, -Math.PI / 2, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI / 2, Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1.3, -1.5, -1]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, Math.PI, -Math.PI / 2]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           orthorhombics.faceCentered.ideal.atoms.calcium.positions.map((position, index) => (
             <mesh position={position} key={index}>

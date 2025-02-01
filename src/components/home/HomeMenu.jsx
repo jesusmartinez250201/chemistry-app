@@ -14,12 +14,12 @@ export default function HomeMenu() {
   }, [])
 
   return (
-    <div className='flex flex-col w-full h-full mt-16
+    <div className='flex flex-col h-full mt-16
         w800:mt-0
-        xl:flex-row xl:justify-center xl:mx-10 xl:items-center'
+        xl:flex-row xl:justify-center xl:mx-auto xl:items-center xl:max-w-[1400px]'
       style={{ backgroundColor: colorPalette.background }}>
-      <div className='order-first xl:order-last mb-14 w-full
-      xl:my-auto xl:w-4/5 xl:px-10'>
+      <div className='order-first  mb-14 w-full
+      xl:my-auto xl:order-last xl:w-4/5 xl:max-w-[1228px]'>
         <PeriodicTable />
       </div>
       <div id='3d-menu' className='

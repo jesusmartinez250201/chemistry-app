@@ -3,7 +3,8 @@ import CloseIcon from "./Icons/CloseIcon"
 import MaximizeIcon from "./Icons/MaximizeIcon"
 import MinimizeIcon from "./Icons/MinimizeIcon"
 import RestoreIcon from "./Icons/RestoreIcon"
-import { useRef, useState, useEffect } from "react"
+import FullScreenContext from "./context/fullScreenContext"
+import { useRef, useState, useEffect, useContext } from "react"
 
 // const TEST = true,
 //   performanceData = { data: [] }
@@ -35,8 +36,10 @@ export default function TitleBar() {
     minimizeRef = useRef(),
     maximizeRef = useRef(),
     restoreRef = useRef(),
+    //[isFullScreen, setFullScreen] = useState(window.ipcRenderer.isFullScreen()),
     [hover, setHover] = useState({ close: false, minimize: false, maximize: false, restore: false }),
     isMaximized = window.ipcRenderer.isMaximized(),
+    { isFullScreen, toggleFullScreen } = useContext(FullScreenContext),
     colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')],
     handleHover = (e) => {
       const { value } = e.target
@@ -90,6 +93,15 @@ export default function TitleBar() {
     return () => window.removeEventListener('resize', handleResize)
   }, [isMaximized])
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'F11') {
+        toggleFullScreen();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [toggleFullScreen]);
 
   return (
     <div id="titleBar" ref={titleBarRef} className="font-mono flex items-center justify-between w-full unselectable"
@@ -108,7 +120,7 @@ export default function TitleBar() {
           <MinimizeIcon className={'w-9 h-auto p-2 pointer-events-none'} style={{ fill: colorPalette.navbarFillIcons }} />
         </button>
         {
-          !window.ipcRenderer.isFullScreen() && (
+          !isFullScreen && (
             <>
               <button type="button" value={'maximize'} ref={maximizeRef}
                 className="flex items-center justify-center title-button transition-all"

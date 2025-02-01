@@ -63,6 +63,12 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
   setFullScreen(value: boolean) {
     ipcRenderer.send("set-full-screen", value);
   },
+  getAppVersion() {
+    return ipcRenderer.sendSync("app-version");
+  },
+  openExternal(url: string) {
+    ipcRenderer.send("open-external", url);
+  }
 });
 
 contextBridge.exposeInMainWorld("data", {

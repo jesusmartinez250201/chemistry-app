@@ -36,6 +36,7 @@ import Center from '../Icons/Center';
 import StructureButton from './Buttons/StructureButton';
 import { RealButton, IdealButton } from './Buttons/RealButton';
 import CenterButton from '../CenterButton';
+import StructureInfoIcon from '../Icons/StructureInfoIcon';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
@@ -79,7 +80,7 @@ export default function CrystallineStructure() {
     }
 
   return (
-    <div id='3d-view' className='h-full w-full flex flex-col flex-grow items-center
+    <div id='3d-view' className='h-full w-full relative flex flex-col flex-grow items-center
       w850:flex-row'>
       <Canvas className='flex-grow' style={{ backgroundColor: colorPalette.background }}>
         <CamControls />
@@ -88,7 +89,7 @@ export default function CrystallineStructure() {
         <pointLight position={[7, 1, 0]} intensity={4} />
         <pointLight position={[-5, 1, 0]} intensity={4} />
         {/* <gridHelper />
-          <axesHelper args={[5]} /> */}
+        <axesHelper args={[5]} /> */}
         {selectedFigure === 'Cubica Simple' && <CubicSimple isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
         {selectedFigure === 'Cubica Centrada en el Cuerpo' && <CubicBodyCentered isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
         {selectedFigure === 'Cubica Centrada en las Caras' && <CubicFaceCentered isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
@@ -103,8 +104,15 @@ export default function CrystallineStructure() {
         {selectedFigure === 'Tetragonal Simple' && <TetragonalSimple isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
         {selectedFigure === 'Tetragonal Centrada en el Cuerpo' && <TetragonalBodyCentered isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
         {selectedFigure === 'Triclinica' && <Triclinic isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
-
       </Canvas>
+      <div className='absolute top-2 left-3 unselectable w-[250px] w850:w-auto' style={{ color: colorPalette.text }}>
+        {structureData && (structureData.axis)}
+        {structureData && (structureData.volume)}
+        <div className='flex items-center'>
+          <span className='w-2/20 mr-1 w850:w-2/50'><StructureInfoIcon /></span>
+          <span className='w-18/20 w850:w-48/50'>{structureData && (structureData.info)}</span>
+        </div>
+      </div>
       <Controls3D>
         <style>{`
          .structure-data::-webkit-scrollbar {
@@ -124,7 +132,7 @@ export default function CrystallineStructure() {
          }
       `}
         </style>
-        <div className='w-1/2 flex flex-col h-full p-3
+        <div className='w-1/2 flex flex-col h-full p-3 justify-around
           w850:w-full w850:justify-between'>
           <div className='flex justify-around'>
             <IdealButton
@@ -146,7 +154,7 @@ export default function CrystallineStructure() {
           </div>
           {structureData && (
             <>
-              <p className='text-center mt-3 mb-1 font-bold text-lg' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
+              <p className='text-center mt-1 mb-1 font-bold text-lg' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
               {(structureData.structureName === 'Estructura Monoclínica Centrada en la Base' && isReal) ? (
 
                 <span>
@@ -194,7 +202,7 @@ export default function CrystallineStructure() {
 
 
         <div className='structure-data w-1/2 h-full overflow-y-scroll flex flex-wrap justify-evenly py-3
-          w850:w-full w850:border-t' 
+          w850:w-full w850:border-t'
           style={{ color: colorPalette.text, fill: colorPalette.text, stroke: colorPalette.text, borderColor: colorPalette.text }}>
 
           {/* CUBIC STRUCTURES */}
@@ -225,7 +233,7 @@ export default function CrystallineStructure() {
             isSelected={selectedFigure === 'Cubica Centrada en las Caras'}
             colorPalette={colorPalette}
             structureName={2}>
-            <div className='w-1/2'>
+            <div className='w-1/2 pointer-events-none'>
               <FaceCenteredCubic />
             </div>
           </StructureButton>
@@ -237,7 +245,7 @@ export default function CrystallineStructure() {
             value={'Tetragonal Simple'}
             isSelected={selectedFigure === 'Tetragonal Simple'}
             colorPalette={colorPalette}
-            structureName={5}>
+            structureName={3}>
             <div className='w-1/2 pointer-events-none'>
               <SimpleTetragonal />
             </div>
@@ -247,7 +255,7 @@ export default function CrystallineStructure() {
             value={'Tetragonal Centrada en el Cuerpo'}
             isSelected={selectedFigure === 'Tetragonal Centrada en el Cuerpo'}
             colorPalette={colorPalette}
-            structureName={6}>
+            structureName={4}>
             <div className='w-1/2 pointer-events-none'>
               <BodyCenteredTetragonal />
             </div>
@@ -260,7 +268,7 @@ export default function CrystallineStructure() {
             value={'Ortorrombica Simple'}
             isSelected={selectedFigure === 'Ortorrombica Simple'}
             colorPalette={colorPalette}
-            structureName={3}>
+            structureName={5}>
             <div className='w-1/2 pointer-events-none'>
               <SimpleOrthorhombic />
             </div>
@@ -270,7 +278,7 @@ export default function CrystallineStructure() {
             value={'Ortorrombica Centrada en la Base'}
             isSelected={selectedFigure === 'Ortorrombica Centrada en la Base'}
             colorPalette={colorPalette}
-            structureName={4}>
+            structureName={6}>
             <div className='w-1/2 pointer-events-none'>
               <BaseCenteredOrthorhombic />
             </div>

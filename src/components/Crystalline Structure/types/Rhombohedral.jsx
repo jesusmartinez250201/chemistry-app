@@ -1,6 +1,6 @@
 import { rhombohedral } from '../../utils/CrystallineStructuresData.json'
 import { Table } from '../../utils/ElementsData.json';
-import { Line } from '@react-three/drei';
+import { Edges, Line, Text, Billboard } from '@react-three/drei';
 import { useMemo, useEffect } from 'react';
 
 const SCALE = [0.0052, 0.0052, 0.0052];
@@ -47,7 +47,30 @@ export default function Rhombohedral({ isReal, showUnitCell, onPutStructure }) {
           symbol: bismuthSymbol
         }
       ],
-      materialSymbol: materialSymbol
+      materialSymbol: materialSymbol,
+      axis:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Ejes: </b><span>a = b = c</span>
+        </div>,
+      volume:
+        <div style={{ color: colorPalette.text }}>
+          <b style={{ color: colorPalette.textTitles }}>Volumen: </b>
+          <span>
+            a<sup>3</sup>
+            <math>
+              <msqrt>
+                <mrow>
+                  <mn>1 - 3</mn>
+                  <mi>cos</mi><msup><mo>⁡</mo><mn>2</mn></msup>
+                  <mn>⁡α + 2</mn>
+                  <mi>cos</mi><msup><mo>⁡</mo><mn>3</mn></msup>
+                  <mn>⁡α</mn>
+                </mrow>
+              </msqrt>
+            </math>
+          </span>
+        </div>,
+      info: <span>Todos los ángulos son iguales y ninguno es equivalente a 90°.</span>
     }), [
       structureName,
       materialName,
@@ -99,6 +122,51 @@ export default function Rhombohedral({ isReal, showUnitCell, onPutStructure }) {
   } else {
     return (
       <group>
+        <Billboard position={[-0.1, -0.2, 1.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            α ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[-0.8, -0.6, -.1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            β ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[1, -1, -0.7]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.textTitles} fontSize={0.2}>
+            γ ≠ 90°
+          </Text>
+        </Billboard>
+        <Billboard position={[0.3, -1.1, 1.3]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            a
+          </Text>
+        </Billboard>
+        <Billboard position={[1.9, -1.1, 0]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            b
+          </Text>
+        </Billboard>
+        <Billboard position={[1.35, 0, 1]} args={[1, 1]} follow={true}>
+          <Text color={colorPalette.text} fontSize={0.3}>
+            c
+          </Text>
+        </Billboard>
+        <mesh position={[-0.81, -1.01, 1.28]} rotation={[0, 0.06, 0]}>
+          <circleGeometry args={[0.75, 32, 0, 2.056]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[-0.6, -1.0, -1.1]} rotation={[1.6, -1.07, 0.07, 'XZY']}>
+          <circleGeometry args={[0.75, 32, 1.595, 1.54]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
+        <mesh position={[1.9, -1.0, -1.3]} rotation={[Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.75, 32, 3.06, -1.4]} />
+          <meshStandardMaterial visible={false} />
+          <Edges color={colorPalette.textTitles} dashed dashScale={10} />
+        </mesh>
         {
           idealEdges.map((edge, index) => (
             <Line points={edge} color={colorPalette.lines3d} key={index} />
