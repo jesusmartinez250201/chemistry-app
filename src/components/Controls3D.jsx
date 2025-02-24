@@ -16,8 +16,8 @@ export default function Controls3D({ children }) {
       style={{color: colorPalette.textControlsHeader, backgroundColor: colorPalette.controlsHeaderBackground}}>
         Controles
       </div>
-      <div id="controls" className='w-full flex text-justify flex-1 overflow-y-scroll justify-around
-        w850:flex-col w850:overflow-y-auto'
+      <div id="controls" className='relative w-full flex text-justify flex-1 overflow-y-hidden justify-around
+        w850:flex-col w850:overflow-y-auto w850:justify-center'
       style={{color: colorPalette.text, backgroundColor: colorPalette.controlsBackground}}>
         {children}
       </div>

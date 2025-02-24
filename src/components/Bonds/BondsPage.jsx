@@ -20,6 +20,7 @@ import RealButton from './Buttons/RealButton';
 import IdealButton from './Buttons/IdealButton';
 import MoleculeButton from './Buttons/MoleculeButton';
 import CenterButton from '../CenterButton';
+import { HelpControls, Help3DView } from '../Help';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
@@ -87,8 +88,9 @@ export default function BondsPage() {
 
   return (
     <div id='3d-view' className='
-      h-full w-full flex flex-col flex-grow items-center
+      h-full w-full flex flex-col flex-grow items-center relative
       w850:flex-row'>
+      <Help3DView />
       <Canvas id='3d' className='flex-grow' style={{ backgroundColor: colorPalette.background }}>
         <CamControls />
         <ambientLight intensity={0.7} />
@@ -106,9 +108,14 @@ export default function BondsPage() {
         )}
       </Canvas>
       <Controls3D>
-        <div className='w-1/2 my-3 flex flex-col justify-center
-          w850:w-full'>
-          <div className='w-full flex justify-evenly'>
+        <HelpControls>
+          El modo <b>ideal</b> en 2D muestra las fórmulas de las moléculas en un plano, el 3D muestra las moléculas en un espacio tridimensional usando un radio uniforme para los átomos y su respectivo tipo de enlace. El modo <b>real</b> muestra los átomos con su radio covalente, iónico o metálico correspondiente.
+          El botón <b>centrar</b> posicionar la figura de vuelta en el centro.
+        </HelpControls>
+        <div className='w-1/2 mx-auto my-3 flex flex-col justify-center
+          w850:w-3/4
+          2xl:w-4/6 2xl:items-stretch'>
+          <div className=' flex justify-around w850:justify-between xl:text-xl'>
             <span>
               <RealButton
                 onClick={handleReal}
@@ -156,19 +163,19 @@ export default function BondsPage() {
         </div>
 
         <div id='molecules' className='w-1/2 flex flex-col overflow-y-scroll py-2
-        w850:w-full w850:overflow-y-visible w850:px-2'>
+        w850:w-full w850:overflow-y-visible w850:px-2 w850:justify-center'>
           {/* COVALENT BONDS */}
-          <h2 className='w-full text-md  w850:text-center'><b>Enlaces covalentes</b></h2>
+          <h2 className='w-full text-md  w850:text-center xl:text-lg'><b>Enlaces covalentes</b></h2>
           <div className='w-full flex justify-evenly my-1'>
             <MoleculeButton
               onClick={handleSelectedMolecule} value={'carbonDioxide'}
               isSelected={selectedMolecule === 'carbonDioxide'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Dióxido de carbono
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='xl:text-lg'>
                   <b>CO<sub>2</sub></b>
                 </div>
               </div>
@@ -178,10 +185,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'ammonia'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Amoniaco
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>NH<sub>3</sub></b>
                 </div>
               </div>
@@ -191,10 +198,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'acetylene'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Acetileno
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>C<sub>2</sub>H<sub>2</sub></b>
                 </div>
               </div>
@@ -202,17 +209,17 @@ export default function BondsPage() {
           </div>
 
           {/* IONIC BONDS*/}
-          <h2 className='w-full text-md w850:text-center'><b>Enlaces iónicos</b></h2>
+          <h2 className='w-full text-md w850:text-center xl:text-lg'><b>Enlaces iónicos</b></h2>
           <div className='w-full flex justify-evenly my-1'>
             <MoleculeButton
               onClick={handleSelectedMolecule} value={'sodiumChloride'}
               isSelected={selectedMolecule === 'sodiumChloride'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Cloruro de sodio
                 </div>
-                <div className='text-base 2xl:text-lg'>
+                <div className='text-base xl:text-lg'>
                   <b>NaCl</b>
                 </div>
               </div>
@@ -222,10 +229,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'magnesiumChloride'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text=sm 2xl:text-base'>
+                <div className='text=sm xl:text-base'>
                   Cloruro de magnesio
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>MgCl<sub>2</sub></b>
                 </div>
               </div>
@@ -235,10 +242,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'potassiumPermanganate'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Permanganato de potasio
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>KMnO<sub>4</sub></b>
                 </div>
               </div>
@@ -246,17 +253,17 @@ export default function BondsPage() {
           </div>
 
           {/* METALLIC BONDS */}
-          <h2 className='w-full text-md w850:text-center'><b>Enlaces metálicos</b></h2>
+          <h2 className='w-full text-md w850:text-center xl:text-lg'><b>Enlaces metálicos</b></h2>
           <div className='w-full flex justify-evenly my-1'>
             <MoleculeButton
               onClick={handleSelectedMolecule} value={'chromium'}
               isSelected={selectedMolecule === 'chromium'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Cromo
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>Cr</b>
                 </div>
               </div>
@@ -266,10 +273,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'gold'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Oro
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>Au</b>
                 </div>
               </div>
@@ -279,10 +286,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'titanium'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Titanio
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>Ti</b>
                 </div>
               </div>
@@ -290,17 +297,17 @@ export default function BondsPage() {
           </div>
 
           {/* ORGANIC MOLECULES */}
-          <h2 className='w-full text-md w850:text-center'><b>Puentes de hidrógeno</b></h2>
+          <h2 className='w-full text-md w850:text-center xl:text-lg'><b>Puentes de hidrógeno</b></h2>
           <div className='w-full flex justify-evenly my-1'>
             <MoleculeButton
               onClick={handleSelectedMolecule} value={'acetone'}
               isSelected={selectedMolecule === 'acetone'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Acetona
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>C<sub>3</sub>H<sub>6</sub>O</b>
                 </div>
               </div>
@@ -310,10 +317,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'aspirin'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Ácido acetilsalicílico
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>C<sub>9</sub>H<sub>8</sub>O<sub>4</sub></b>
                 </div>
               </div>
@@ -323,10 +330,10 @@ export default function BondsPage() {
               isSelected={selectedMolecule === 'glucose'}
               colorPalette={colorPalette}>
               <div className='pointer-events-none'>
-                <div className='text-sm 2xl:text-base'>
+                <div className='text-sm xl:text-base'>
                   Glucosa
                 </div>
-                <div className='text-md 2xl:text-lg'>
+                <div className='text-md xl:text-lg'>
                   <b>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></b>
                 </div>
               </div>

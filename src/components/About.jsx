@@ -1,6 +1,10 @@
 import TitlebarIcon from "./Icons/TitlebarIcon"
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
+/**
+ * About component. Contains information about the app, the developer and collaborators.
+ * @returns {JSX.Element}
+ */
 export default function About() {
   const appVersion = window.ipcRenderer.getAppVersion(),
     handleLinkClick = (e) => {
@@ -25,28 +29,46 @@ export default function About() {
           </span>
         </div>
       </span>
-      <div className="mt-1 mx-9" style={{ color: colorPalette.text }}>
-        {/* <span className="block">
-        Esta aplicación fue desarrollada con el propósito de facilitar el aprendizaje de la química a estudiantes de una manera interactiva y visual.
-        </span> */}
+      <div className="mt-1 mx-8" style={{ color: colorPalette.text }}>
+        <span className="block">
+          Esta aplicación fue desarrollada con el propósito de facilitar el aprendizaje de la química a estudiantes de una manera interactiva y visual.
+        </span>
         <span className="my-2 block">
-          Hecha con ❤️ por <strong>Jesús Armando Martínez Vargas</strong> en la <strong><a draggable="false" href="http://www.upvictoria.edu.mx/" onClick={handleLinkClick}>Universidad Politécnica de Victoria</a></strong>.
+          Hecha con ❤️ por <b className="">Jesús Armando Martínez Vargas</b> en la <span className="hover:transition-all hover:font-bold"><a draggable="false" href="http://www.upvictoria.edu.mx/" onClick={handleLinkClick}>Universidad Politécnica de Victoria</a></span>.
         </span>
         <span className="my-2 block">
           <strong className="">Contacto: </strong>
-          <span>
+          <span className="block ml-2">
             <div>
-              <a draggable="false" href="mailto:jesusmtzzdev@gmail.com" onClick={handleLinkClick}>
+              <a className="hover:transition-all hover:font-bold" draggable="false" href="mailto:jesusmtzzdev@gmail.com" onClick={handleLinkClick}>
                 jesusmtzzdev@gmail.com
               </a>
             </div>
             <div>
-              <a draggable="false" href="mailto:1930337@upv.edu.mx" onClick={handleLinkClick}>
+              <a className="hover:transition-all hover:font-bold" draggable="false" href="mailto:1930337@upv.edu.mx" onClick={handleLinkClick}>
                 1930337@upv.edu.mx
               </a>
             </div>
           </span>
         </span>
+        <p className="text-xl font-bold">Colaboradores</p>
+        <ul className="ml-2">
+          <li>
+            Juan López Hernández. <b>Contacto: </b><a className="hover:transition-all hover:font-bold" draggable="false" href="mailto:jlopezh@upv.edu.mx" onClick={handleLinkClick}>
+              jlopezh@upv.edu.mx
+            </a>
+          </li>
+          <li>
+            María Raquel Ortiz Álvarez <b>Contacto: </b><a className="hover:transition-all hover:font-bold" draggable="false" href="mailto:mortiza@upv.edu.mx" onClick={handleLinkClick}>
+              mortiza@upv.edu.mx
+            </a>
+          </li>
+          <li>
+            Enrique Rocha Rangel <b>Contacto: </b><a className="hover:transition-all hover:font-bold" draggable="false" href="mailto:erochar@upv.edu.mx" onClick={handleLinkClick}>
+              erochar@upv.edu.mx
+            </a>
+          </li>
+        </ul>
         <p className='mt-2 text-lg text-justify'>
           <strong>Version:</strong> {appVersion} (Febrero 2025)
         </p>

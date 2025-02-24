@@ -12,6 +12,8 @@ const store = new Store();
 
 const versionPhase = "alpha";
 
+const OPERATIVE_SYSTEM = process.platform;
+
 store.set("colorPalettes", ""); //Restore default color palettes
 store.set("colorPalettes", colorPalettes);
 
@@ -217,4 +219,7 @@ ipcMain.on("app-isMaximized", async (event) => {
 });
 ipcMain.on("app-restore", async () => {
   win?.restore();
+});
+ipcMain.on("get-os", async () => {
+  return OPERATIVE_SYSTEM;
 });

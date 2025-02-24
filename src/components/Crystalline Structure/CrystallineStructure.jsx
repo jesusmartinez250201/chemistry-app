@@ -37,6 +37,7 @@ import StructureButton from './Buttons/StructureButton';
 import { RealButton, IdealButton } from './Buttons/RealButton';
 import CenterButton from '../CenterButton';
 import StructureInfoIcon from '../Icons/StructureInfoIcon';
+import { HelpControls, Help3DView } from '../Help';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
@@ -82,6 +83,7 @@ export default function CrystallineStructure() {
   return (
     <div id='3d-view' className='h-full w-full relative flex flex-col flex-grow items-center
       w850:flex-row'>
+      <Help3DView />
       <Canvas className='flex-grow' style={{ backgroundColor: colorPalette.background }}>
         <CamControls />
         <ambientLight intensity={1.5} />
@@ -105,7 +107,7 @@ export default function CrystallineStructure() {
         {selectedFigure === 'Tetragonal Centrada en el Cuerpo' && <TetragonalBodyCentered isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
         {selectedFigure === 'Triclinica' && <Triclinic isReal={isReal} showUnitCell={showUnitCell} onPutStructure={handleStructureData} />}
       </Canvas>
-      <div className='absolute top-2 left-3 unselectable w-[250px] w850:w-auto' style={{ color: colorPalette.text }}>
+      <div className='absolute top-2 left-3 unselectable w-[250px] w850:w-auto xl:text-xl 2xl:text-2xl' style={{ color: colorPalette.text }}>
         {structureData && (structureData.axis)}
         {structureData && (structureData.volume)}
         <div className='flex items-center'>
@@ -132,76 +134,84 @@ export default function CrystallineStructure() {
          }
       `}
         </style>
-        <div className='w-1/2 flex flex-col h-full p-3 justify-around
-          w850:w-full w850:justify-between'>
-          <div className='flex justify-around'>
-            <IdealButton
-              onClick={handleReal}
-              value={'ideal'}
-              isSelected={!isReal}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>IDEAL</span>
-              <IdealBtn />
-            </IdealButton>
-            <RealButton
-              onClick={handleReal}
-              value={'real'}
-              isSelected={isReal}
-              colorPalette={colorPalette}>
-              <span className='pointer-events-none'>REAL</span>
-              <RealBtn />
-            </RealButton>
-          </div>
-          {structureData && (
-            <>
-              <p className='text-center mt-1 mb-1 font-bold text-lg' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
-              {(structureData.structureName === 'Estructura Monoclínica Centrada en la Base' && isReal) ? (
+        <div className="w-full">
+          <HelpControls>
+            El modo <b>ideal</b> muestra las estructuras con los átomos en posiciones ideales. En el modo <b>real</b> se muestran las estructuras con los átomos en posiciones reales según las fuentes consultadas. La opción <b>Mostrar celda unitaria</b> permite visualizar la celda unitaria de la estructura en el modo real.
+            El botón <b>centrar</b> posicionar la figura de vuelta en el centro.
+          </HelpControls>
+          <div id='controls' className='relative w-1/2 flex flex-col p-3 justify-center
+          w850:w-3/4 w850:m-auto
+          2xl:w-4/6 2xl:items-stretch'>
+            <div className='flex justify-around w850:justify-between xl:text-xl'>
+              <IdealButton
+                onClick={handleReal}
+                value={'ideal'}
+                isSelected={!isReal}
+                colorPalette={colorPalette}>
+                <span className='pointer-events-none'>IDEAL</span>
+                <IdealBtn />
+              </IdealButton>
+              <RealButton
+                onClick={handleReal}
+                value={'real'}
+                isSelected={isReal}
+                colorPalette={colorPalette}>
+                <span className='pointer-events-none'>REAL</span>
+                <RealBtn />
+              </RealButton>
+            </div>
+            {structureData && (
+              <>
+                <p className='text-center my-1 font-bold text-lg 2xl:my-3 2xl:text-2xl' style={{ color: colorPalette.textTitles }}>{structureData.structureName}</p>
+                {(structureData.structureName === 'Estructura Monoclínica Centrada en la Base' && isReal) ? (
 
-                <span>
-                  <b style={{ color: colorPalette.textTitles }}>Material: </b>{parse(structureData.materialSymbol)}
-                </span>
-              ) :
-                (
-                  <span>
-                    <b style={{ color: colorPalette.textTitles }}>Material:</b> {structureData.materialName} ({parse(structureData.materialSymbol)})
+                  <span className='text-center'>
+                    <b style={{ color: colorPalette.textTitles }}>Material: </b>{parse(structureData.materialSymbol)}
                   </span>
-                )
-              }
-              <div className='flex flex-wrap justify-evenly'>
-                {
-                  structureData.atomsLegend.map((atom, index) => (
-                    <span key={index} className='flex mr-1 items-center mt-1'>
-                      <span
-                        className={`w-[15px] h-[15px] m-1`}
-                        style={{ backgroundColor: atom.color }}>
-                      </span>
-                      <span>{`${atom.material} (${atom.symbol})`}</span>
+                ) :
+                  (
+                    <span className='text-center 2xl:text-xl'>
+                      <b style={{ color: colorPalette.textTitles }}>Material:</b> {structureData.materialName} ({parse(structureData.materialSymbol)})
                     </span>
-                  ))
+                  )
                 }
-              </div>
+                <div className='flex flex-wrap justify-evenly 2xl:text-xl'>
+                  {
+                    structureData.atomsLegend.map((atom, index) => (
+                      <span key={index} className='flex mr-1 items-center mt-1'>
+                        <span
+                          className={`w-[15px] h-[15px] m-1`}
+                          style={{ backgroundColor: atom.color }}>
+                        </span>
+                        <span>{`${atom.material} (${atom.symbol})`}</span>
+                      </span>
+                    ))
+                  }
+                </div>
 
-            </>
-          )}
-          <div className='w-full flex justify-center my-1'>
-            <CenterButton onClick={handleCameraCenter} colorPalette={colorPalette}>
-              <Center />
-              <span className='ml-1'>CENTRAR</span>
-            </CenterButton>
+              </>
+            )}
+            <div className='w-full flex justify-center my-1'>
+              <CenterButton onClick={handleCameraCenter} colorPalette={colorPalette}>
+                <Center />
+                <span className='ml-1'>CENTRAR</span>
+              </CenterButton>
+            </div>
+            {
+              isReal && (
+                <div className='w-full flex items-center xl:text-xl'>
+                  <input type="checkbox" name="unit-cell" id="unit-cell" checked={showUnitCell} onChange={() => setShowUnitCell(!showUnitCell)}
+                    style={{ accentColor: colorPalette.checkbox }} />
+                  <label htmlFor="unit-cell" className='unselectable ml-1'>Mostrar celda unitaria</label>
+                </div>
+              )
+            }
           </div>
-          {
-            isReal && (
-              <div className='w-full flex items-center'>
-                <input type="checkbox" name="unit-cell" id="unit-cell" checked={showUnitCell} onChange={() => setShowUnitCell(!showUnitCell)}
-                  style={{ accentColor: colorPalette.checkbox }} />
-                <label htmlFor="unit-cell" className='unselectable ml-1'>Mostrar celda unitaria</label>
-              </div>
-            )
-          }
         </div>
 
 
-        <div className='structure-data w-1/2 h-full overflow-y-scroll flex flex-wrap justify-evenly py-3
+
+        <div className='structure-data w-1/2 overflow-y-scroll flex flex-wrap justify-evenly py-3
           w850:w-full w850:border-t'
           style={{ color: colorPalette.text, fill: colorPalette.text, stroke: colorPalette.text, borderColor: colorPalette.text }}>
 

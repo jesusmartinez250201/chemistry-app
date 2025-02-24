@@ -68,6 +68,9 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
   },
   openExternal(url: string) {
     ipcRenderer.send("open-external", url);
+  },
+  getOS() {
+    return ipcRenderer.sendSync("get-os");
   }
 });
 

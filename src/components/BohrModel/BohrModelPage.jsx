@@ -7,6 +7,7 @@ import { Table } from '../utils/ElementsData.json';
 import Center from '../Icons/Center';
 import { RealButton, IdealButton } from './Buttons/RealButton';
 import CenterButton from '../CenterButton';
+import { HelpControls, Help3DView } from '../Help';
 
 const colorPalette = window.data.store.get('colorPalettes')[window.data.store.get('selectedColorPalette')]
 
@@ -38,8 +39,13 @@ export default function BohrModelPage() {
       <div id='3d-view' className='
         h-full w-full flex flex-col flex-grow items-center
         w850:flex-row'>
+        <Help3DView />
         <Bohr3DModel atomicNumber={currentElement} isReal={isReal} onCenterCamera={handleCenterCamera} cameraRef={cameraRef} />
         <Controls3D>
+          <HelpControls>
+            El modo <b>ideal</b> muestra las órbitas de los electrones con un radio fijo. En el modo <b>real</b> se aplica la fórmula de Bohr para calcular el radio de las órbitas.
+            El botón <b>centrar</b> posicionar la figura de vuelta en el centro.
+          </HelpControls>
           <div className='w-8/20 flex flex-col justify-center
             w850:w-full px-3 my-2'>
             <div className='w-full flex justify-around'>
@@ -68,9 +74,10 @@ export default function BohrModelPage() {
               </CenterButton>
             </div>
           </div>
-          <div className='w-12/20 relative max-w-[400px] my-auto
-            w850:w-19/20 w850:mx-auto'>
-            <h2 className='absolute text-center left-[30%] text-2xl' style={{ color: colorPalette.text }}>{elementName}</h2>
+          <div className='w-12/20 relative max-w-[340px] m-auto
+              w850:w-19/20 w850:mx-auto 2xl:max-w-[650px] w850:my-0
+              xl:max-w-[500px]'>
+            <h2 className='absolute text-center left-[30%] text-2xl w850:left-[21%]' style={{ color: colorPalette.text }}>{elementName}</h2>
             <PeriodicTableSelector onSelectElement={handleSelectElement} />
           </div>
         </Controls3D>
@@ -84,7 +91,6 @@ export default function BohrModelPage() {
             cursor: pointer;
           }
           `}
-
         </style>
       </div>
     </SliderContext.Provider>

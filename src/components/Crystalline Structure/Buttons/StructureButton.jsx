@@ -22,7 +22,9 @@ const StructureButton = React.memo(({ onClick, value, children, isSelected, colo
 
   return (
     <button
-      className='w-24 rounded flex flex-col items-center justify-around hover:transition-all'
+      className='w-24 rounded flex flex-col items-center justify-around hover:transition-all
+      lg:w-28
+        xl:w-32 2xl:text-lg'
       onClick={onClick}
       value={value}
       onMouseEnter={() => setHover(true)}
