@@ -59,7 +59,7 @@ export default function TitleBar() {
   }
 
   return (
-    operativeSystem !== 'darwin' ? (
+    operativeSystem === 'win32' ? (
       <div id="titleBar" ref={titleBarRef} className="font-mono flex items-center justify-between w-full unselectable"
         style={{ backgroundColor: colorPalette.navbarBackground, color: colorPalette.navbarFillIcons, stroke: colorPalette.navbarFillIcons }}>
         <span className="flex items-center" onClick={() => window.ipcRenderer.quit()}>
