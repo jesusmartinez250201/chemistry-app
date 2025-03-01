@@ -62,7 +62,6 @@ function createWindow() {
   });
 
   win = new BrowserWindow({
-    autoHideMenuBar: true,
     width: 664,
     height: 768,
     webPreferences: {
@@ -71,8 +70,9 @@ function createWindow() {
     show: false,
     minWidth: 664,
     minHeight: 768,
-    frame: false,
-    fullscreen: store.get("full-screen") as boolean,
+    frame: OPERATIVE_SYSTEM !== "win32",
+    fullscreen: OPERATIVE_SYSTEM === "darwin" ? false : store.get("full-screen") as boolean,
+    autoHideMenuBar: true,
   });
 
   win.maximize();
@@ -99,6 +99,7 @@ function createWindow() {
     }
     if (win) {
       win.show();
+      win.setMenu(null);
     }
     //splash.webContents.openDevTools();
   });
@@ -220,6 +221,6 @@ ipcMain.on("app-isMaximized", async (event) => {
 ipcMain.on("app-restore", async () => {
   win?.restore();
 });
-ipcMain.on("get-os", async () => {
+ipcMain.handle("get-os", async () => {
   return OPERATIVE_SYSTEM;
 });

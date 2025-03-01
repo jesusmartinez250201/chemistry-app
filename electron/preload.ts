@@ -70,7 +70,7 @@ contextBridge.exposeInMainWorld("ipcRenderer", {
     ipcRenderer.send("open-external", url);
   },
   getOS() {
-    return ipcRenderer.sendSync("get-os");
+    return ipcRenderer.invoke("get-os");
   }
 });
 

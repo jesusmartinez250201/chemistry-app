@@ -1672,6 +1672,10 @@ video {
   width: 100vw;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .max-w-\[1000px\] {
   max-width: 1000px;
 }
@@ -1749,6 +1753,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }
 
 .justify-center {
@@ -2653,10 +2661,6 @@ video {
 
   .\32xl\:w-4\/6 {
     width: 66.666667%;
-  }
-
-  .\32xl\:w-full {
-    width: 100%;
   }
 
   .\32xl\:max-w-\[650px\] {

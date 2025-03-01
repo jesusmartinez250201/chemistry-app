@@ -134,12 +134,12 @@ export default function CrystallineStructure() {
          }
       `}
         </style>
-        <div className="w-full">
+        <div className="flex w-1/2 w850:w-full items-center">
           <HelpControls>
             El modo <b>ideal</b> muestra las estructuras con los átomos en posiciones ideales. En el modo <b>real</b> se muestran las estructuras con los átomos en posiciones reales según las fuentes consultadas. La opción <b>Mostrar celda unitaria</b> permite visualizar la celda unitaria de la estructura en el modo real.
             El botón <b>centrar</b> posicionar la figura de vuelta en el centro.
           </HelpControls>
-          <div id='controls' className='relative w-1/2 flex flex-col p-3 justify-center
+          <div id='controls' className='relative w-full flex flex-col p-3
           w850:w-3/4 w850:m-auto
           2xl:w-4/6 2xl:items-stretch'>
             <div className='flex justify-around w850:justify-between xl:text-xl'>
