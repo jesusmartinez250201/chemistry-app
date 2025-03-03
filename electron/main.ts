@@ -64,6 +64,8 @@ function createWindow() {
   win = new BrowserWindow({
     width: 664,
     height: 768,
+    maximizable: true,
+    resizable: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
     },
@@ -71,7 +73,7 @@ function createWindow() {
     minWidth: 664,
     minHeight: 768,
     frame: OPERATIVE_SYSTEM !== "win32",
-    fullscreen: OPERATIVE_SYSTEM === "darwin" ? false : store.get("full-screen") as boolean,
+    fullscreen: OPERATIVE_SYSTEM !== "win32" ? false : store.get("full-screen") as boolean,
     autoHideMenuBar: true,
   });
 
@@ -116,13 +118,7 @@ function createWindow() {
       ) {
         event.preventDefault();
         win.reload();
-      } else if (input.code === "F11") {
-        if (win.isFullScreen()) {
-          win.setFullScreen(false);
-        } else {
-          win.setFullScreen(true);
-        }
-      }
+      } 
     }
   });
 }

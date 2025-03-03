@@ -1,13 +1,57 @@
 {
   "name": "chemistry-app",
+  "author": {
+    "name": "Jesus Armando Martinez Vargas",
+    "email": "jesusmtzzdev@gmail.com"
+  },
   "private": true,
-  "version": "0.1.9",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
+  },
+  "bugs": {
+    "email": "jesusmtzzdev@gmail.com",
+    "url": "https://github.com/jesusmartinez250201/chemistry-app/issues"
+  },
+  "build": {
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "extends": null,
+    "extraMetadata": {
+      "main": "./dist-electron/main.js"
+    },
+    "appId": "com.chemistry.app",
+    "linux": {
+      "target": [
+        "deb",
+        "rpm"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "productName": "chemistry-app",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "src/**/*",
+      "electron/**/*",
+      "public/**/*",
+      "index.html"
+    ]
   },
   "dependencies": {
     "@react-spring/three": "^9.7.5",
