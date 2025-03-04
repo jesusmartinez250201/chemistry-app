@@ -11,6 +11,7 @@ export default function SettingsPage() {
     { isFullScreen, toggleFullScreen } = useContext(FullScreenContext),
     [fullScreenChecked, setFullScreenChecked] = useState(isFullScreen),
     fullScreenRef = useRef(),
+    [operativeSystem, setOperativeSystem] = useState(null),
     handleChange = (e) => {
       setSelectedPalette(e.target.value);
     },
@@ -28,6 +29,15 @@ export default function SettingsPage() {
       }
     };
 
+
+  useEffect(() => {
+    const fetchOS = async () => {
+      const os = await window.ipcRenderer.getOS();
+      setOperativeSystem(os);
+    };
+    fetchOS();
+  }, []);
+
   useEffect(() => {
     setFullScreenChecked(isFullScreen);
   }, [isFullScreen]);
@@ -44,11 +54,16 @@ export default function SettingsPage() {
         </h1>
       </span>
       <div className="mt-1 mx-9">
-        <span className="flex w-full py-2 border-b"
-          style={{ borderColor: colorPalette.text }}>
-          <input ref={fullScreenRef} type="checkbox" name="f-screen" id="full-screen" checked={fullScreenChecked} onChange={handleFullScreenChange} style={{ accentColor: colorPalette.checkbox }} />
-          <label htmlFor="full-screen" className="text-xl font-bold ml-2" style={{ color: colorPalette.text }}>Pantalla completa (F11)</label>
-        </span>
+        {
+          operativeSystem !== 'darwin' && (
+            <span className="flex w-full py-2 border-b"
+              style={{ borderColor: colorPalette.text }}>
+              <input ref={fullScreenRef} type="checkbox" name="f-screen" id="full-screen" checked={fullScreenChecked} onChange={handleFullScreenChange} style={{ accentColor: colorPalette.checkbox }} />
+              <label htmlFor="full-screen" className="text-xl font-bold ml-2" style={{ color: colorPalette.text }}>Pantalla completa (F11)</label>
+            </span>
+          )
+        }
+
         <div className="w-full py-2 border-b"
           style={{ borderColor: colorPalette.text }}>
           <h2

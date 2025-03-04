@@ -64,7 +64,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 664,
     height: 768,
-    maximizable: true,
+    maximizable: OPERATIVE_SYSTEM !== 'linux',
     resizable: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
@@ -72,8 +72,8 @@ function createWindow() {
     show: false,
     minWidth: 664,
     minHeight: 768,
-    frame: OPERATIVE_SYSTEM !== "win32",
-    fullscreen: OPERATIVE_SYSTEM !== "win32" ? false : store.get("full-screen") as boolean,
+    frame: OPERATIVE_SYSTEM === "darwin",
+    fullscreen: OPERATIVE_SYSTEM === "darwin" ? false : store.get("full-screen") as boolean,
     autoHideMenuBar: true,
   });
 

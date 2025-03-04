@@ -59,7 +59,7 @@ export default function TitleBar() {
   }
 
   return (
-    operativeSystem === 'win32' ? (
+    operativeSystem !== 'darwin' ? (
       <div id="titleBar" ref={titleBarRef} className="font-mono flex items-center justify-between w-full unselectable"
         style={{ backgroundColor: colorPalette.navbarBackground, color: colorPalette.navbarFillIcons, stroke: colorPalette.navbarFillIcons }}>
         <span className="flex items-center" onClick={() => window.ipcRenderer.quit()}>
@@ -88,7 +88,7 @@ export default function TitleBar() {
                 </button>
                 <button type="button" value={'restore'} ref={restoreRef}
                   className="flex items-center justify-center title-button transition-all"
-                  onClick={() => window.ipcRenderer.restore()}
+                  onClick={() => {window.ipcRenderer.unmaximize()}}
                   onMouseEnter={handleHover}
                   onMouseLeave={handleHover}
                   style={{ backgroundColor: hover.restore ? colorPalette.buttonsNavbarHover : 'transparent', display: isMaximized ? 'flex' : 'none' }}>
