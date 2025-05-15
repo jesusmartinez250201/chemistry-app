@@ -12,6 +12,7 @@ export default function About() {
   ],
     date = new Date(),
     month = monthNames[date.getMonth()],
+    year = date.getFullYear(),
     appVersion = window.ipcRenderer.getAppVersion(),
     handleLinkClick = (e) => {
       e.preventDefault();
@@ -76,7 +77,7 @@ export default function About() {
           </li>
         </ul>
         <p className='mt-2 text-lg text-justify'>
-          <strong>Version:</strong> {appVersion} ({month} 2025)
+          <strong>Version:</strong> {appVersion} ({month} {year})
         </p>
         {/* <p>Copyright&copy;  algo. 2025. Todos los derechos reservados.</p> */}
       </div>
