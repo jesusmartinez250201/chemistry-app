@@ -6,7 +6,13 @@ const colorPalette = window.data.store.get('colorPalettes')[window.data.store.ge
  * @returns {JSX.Element}
  */
 export default function About() {
-  const appVersion = window.ipcRenderer.getAppVersion(),
+  const monthNames = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ],
+    date = new Date(),
+    month = monthNames[date.getMonth()],
+    appVersion = window.ipcRenderer.getAppVersion(),
     handleLinkClick = (e) => {
       e.preventDefault();
       window.ipcRenderer.openExternal(e.target.href);
@@ -70,7 +76,7 @@ export default function About() {
           </li>
         </ul>
         <p className='mt-2 text-lg text-justify'>
-          <strong>Version:</strong> {appVersion} (Febrero 2025)
+          <strong>Version:</strong> {appVersion} ({month} 2025)
         </p>
         {/* <p>Copyright&copy;  algo. 2025. Todos los derechos reservados.</p> */}
       </div>

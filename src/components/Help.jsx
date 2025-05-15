@@ -35,8 +35,8 @@ export function HelpControls({ children }) {
           className='w-100 z-50'
           style={{
             position: 'fixed',
-            top: window.innerHeight < 850 ? Math.min(cursorPosition.y + 10, window.innerHeight - 20) : Math.min(cursorPosition.y - 80, window.innerHeight - 2000),
-            left: window.innerWidth < 850 ? Math.min(cursorPosition.x + 10, window.innerWidth - 90) : Math.min(cursorPosition.x - 200, window.innerWidth - 90),
+            top: Math.min(cursorPosition.y + 10, window.innerHeight - 20),
+            left: Math.min(cursorPosition.x - 410, window.innerWidth - 90),
             backgroundColor: 'white',
             padding: '5px',
             borderRadius: '5px',

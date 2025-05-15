@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const store = new Store();
 
-const versionPhase = "alpha";
+const versionPhase = "beta";
 
 const OPERATIVE_SYSTEM = process.platform;
 
